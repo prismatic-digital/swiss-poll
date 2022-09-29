@@ -18,7 +18,7 @@ export default async function handle(
   // Check Authentication
   const session = await getSession({ req: req });
   if (!session) {
-    return res.status(401).json({ message: "Not authenticated" });
+    return res.status(401).json({ message: "Not authenticated ndfn" });
   }
 
   const formId = req.query.id.toString();

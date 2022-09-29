@@ -88,7 +88,7 @@ export default function ResultsSummary({ formId }) {
                       "text",
                       "textarea",
                       "website",
-                    ].includes(element.type) ? (
+                    ].includes(element.type) && element.label != 'Autre :' ? (
                       <TextResults element={element} />
                     ) : ["checkbox", "radio"].includes(element.type) ? (
                       <ChoiceResults element={element} />

@@ -10,8 +10,8 @@ export default function ChoiceResults({ element }) {
       {
         //data: getDataset(element, elementAnswers),
         data: element.options.map((o) => o.summary || 0),
-        backgroundColor: ["rgba(245, 59, 87, 0.7)"],
-        borderColor: ["rgba(245, 59, 87, 1)"],
+        backgroundColor: ["rgba(38, 132, 132, 0.7)"],
+        borderColor: ["rgba(38, 132, 132, 1)"],
         borderWidth: 1,
       },
     ],

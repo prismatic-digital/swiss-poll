@@ -16,6 +16,33 @@ import WebsiteQuestion from "./tools/WebsiteQuestion";
 import PhoneQuestion from "./tools/PhoneQuestion";
 import NumberQuestion from "./tools/NumberQuestion";
 import TextareaQuestion from "./tools/TextareaQuestion";
+import ReactDOM from "react-dom";
+
+class Summary {
+  static get toolbox() {
+    return {
+      title: 'Summary',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Stats Chart</title><rect x="64" y="320" width="48" height="160" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="288" y="224" width="48" height="256" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="400" y="112" width="48" height="368" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="176" y="32" width="48" height="448" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>'
+    };
+  }
+
+  render(){
+    const div = document.createElement("div");
+    const toolView = (
+      <div className="pb-5">
+        [summary_block]
+      </div>
+    );
+    ReactDOM.render(toolView, div);
+    return div;
+  }
+
+  save(blockContent){
+    return {
+      url: blockContent.value
+    }
+  }
+}
 
 interface EditorProps {
   id: string;
@@ -108,6 +135,14 @@ const Editor = ({
         },
         header: {
           class: Header,
+          config: {
+            placeholder: "Enter a header",
+            levels: [1, 2, 3],
+            defaultLevel: 1,
+          },
+        },
+        summary: {
+          class: Summary,
           config: {
             placeholder: "Enter a header",
             levels: [1, 2, 3],

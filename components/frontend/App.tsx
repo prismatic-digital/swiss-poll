@@ -7,6 +7,7 @@ import { SnoopElement, SnoopForm, SnoopPage } from "@snoopforms/react";
 import { useMemo } from "react";
 import { generateId } from "../../lib/utils";
 import Loading from "../Loading";
+import ResultsSummary from "../results/ResultsSummary";
 
 export default function App({ id = "", formId, blocks, localOnly = false }) {
   const pages = useMemo(() => {
@@ -187,6 +188,8 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     }}
                     required={block.data.required}
                   />
+                ) : block.type === "summary" ? (
+                  <ResultsSummary formId={formId} />
                 ) : null}
               </div>
             ))}
