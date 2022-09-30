@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+//import { getSession } from "next-auth/react";
 import NextCors from "nextjs-cors";
-import { formHasOwnership } from "../../../../../lib/api";
+//import { formHasOwnership } from "../../../../../lib/api";
 import { prisma } from "../../../../../lib/prisma";
 
 export default async function handle(
@@ -20,12 +20,12 @@ export default async function handle(
   // Gets all forms of a user
   if (req.method === "GET") {
     // check if session exist
-    const session = await getSession({ req: req });
+    //const session = await getSession({ req: req });
     // if (!session) {
     //   return res.status(401).json({ message: "Not authenticated" });
     // }
     // check if user is form owner
-    const ownership = await formHasOwnership(session, formId);
+    //const ownership = await formHasOwnership(session, formId);
     // if (!ownership) {
     //   return res.status(401).json({
     //     message:
