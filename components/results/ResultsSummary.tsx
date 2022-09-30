@@ -12,7 +12,7 @@ import Loading from "../Loading";
 import TextResults from "./summary/TextResults";
 import ChoiceResults from "./summary/ChoiceResults";
 
-export default function ResultsSummary({ formId }) {
+export default function ResultsSummary({ formId, showCards = true }) {
   const { submissionSessions, isLoadingSubmissionSessions } =
     useSubmissionSessions(formId);
 
@@ -59,21 +59,25 @@ export default function ResultsSummary({ formId }) {
 
   return (
     <>
-      <h2 className="mt-8 text-xl font-bold text-ui-gray-dark">
-        Responses Overview
-      </h2>
-      <dl className="grid grid-cols-1 gap-5 mt-8 sm:grid-cols-2">
-        {stats.map((item) => (
-          <AnalyticsCard
-            key={item.id}
-            value={item.stat}
-            label={item.name}
-            toolTipText={item.toolTipText}
-            trend={item.trend}
-            smallerText={item.smallerText}
-          />
-        ))}
-      </dl>
+      {showCards && (
+        <>
+          <h2 className="mt-8 text-xl font-bold text-ui-gray-dark">
+            Responses Overview
+          </h2>
+          <dl className="grid grid-cols-1 gap-5 mt-8 sm:grid-cols-2">
+            {stats.map((item) => (
+              <AnalyticsCard
+                key={item.id}
+                value={item.stat}
+                label={item.name}
+                toolTipText={item.toolTipText}
+                trend={item.trend}
+                smallerText={item.smallerText}
+              />
+            ))}
+          </dl>
+        </>
+      )}
       <div>
         {summary?.pages &&
           summary.pages.map(
@@ -88,7 +92,7 @@ export default function ResultsSummary({ formId }) {
                       "text",
                       "textarea",
                       "website",
-                    ].includes(element.type) && element.label != 'Autre :' ? (
+                    ].includes(element.type) && element.label != "Autre :" ? (
                       <TextResults element={element} />
                     ) : ["checkbox", "radio"].includes(element.type) ? (
                       <ChoiceResults element={element} />

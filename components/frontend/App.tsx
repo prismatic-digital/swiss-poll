@@ -189,7 +189,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     required={block.data.required}
                   />
                 ) : block.type === "summary" ? (
-                  <ResultsSummary formId={formId} />
+                  <ResultsSummary formId={formId} showCards={false} />
                 ) : null}
               </div>
             ))}
