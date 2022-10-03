@@ -237,7 +237,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
           </SnoopPage>
         ))}
       </SnoopForm>
-      <div className="w-full max-w-3xl mx-auto text-[11px] text-slate-500 text-right mt-3">Questionnaire fourni par <a className="underline" href="https://www.swisspoll.ch/">SwissPoll</a>, hébergé en Suisse</div>
+      <div className="w-full max-w-3xl mx-auto text-[11px] text-slate-500 text-right mt-3">Questionnaire fourni par <a className="underline" href="https://www.swisspoll.ch/" target="_blank">SwissPoll</a>, hébergé en Suisse</div>
     </div>
   );
 }
