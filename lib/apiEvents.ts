@@ -35,6 +35,8 @@ export const validateEvents = (
 
 export const processApiEvent = async (event: ApiEvent, formId) => {
   // save submission
+  console.log('from apiEvents');
+  console.log(event);
   if (event.type === "pageSubmission") {
     const data = event.data;
     await prisma.sessionEvent.create({
