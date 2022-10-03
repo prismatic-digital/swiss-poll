@@ -14,7 +14,7 @@ export const fetcher = async (url) => {
     error.status = res.status;
     throw error;
   }
-
+  console.log(res.json());
   return res.json();
 };
 
