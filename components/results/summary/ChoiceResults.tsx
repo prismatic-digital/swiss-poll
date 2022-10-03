@@ -26,14 +26,17 @@ export default function ChoiceResults({ element }) {
       },
     },
     scales: {
-      yAxis: [
-        {
-          ticks: {
-            min: 1,
-            precision: 0,
-          },
+      y: {
+        ticks: {
+          display: true,
         },
-      ],
+      },
+      x: {
+        ticks: {
+          display: true,
+          precision: 0,
+        },
+      }
     },
   };
 
