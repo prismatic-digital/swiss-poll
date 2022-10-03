@@ -47,16 +47,16 @@ export const processApiEvent = async (event: ApiEvent, formId) => {
         submissionSession: { connect: { id: data.submissionSessionId } },
       },
     });
-    const form = await prisma.form.findUnique({
-      where: {
-        id: formId,
-      },
-    });
-    capturePosthogEvent(form.ownerId, "pageSubmission received", {
-      formId,
-      formType: form.formType,
-    });
-    sendTelemetry("pageSubmission received");
+    // const form = await prisma.form.findUnique({
+    //   where: {
+    //     id: formId,
+    //   },
+    // });
+    // capturePosthogEvent(form.ownerId, "pageSubmission received", {
+    //   formId,
+    //   formType: form.formType,
+    // });
+    //sendTelemetry("pageSubmission received");
   } else if (event.type === "submissionCompleted") {
     // TODO
   } else if (event.type === "updateSchema") {
