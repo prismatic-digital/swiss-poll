@@ -27,10 +27,12 @@ export default async function handle(
       const { status, message } = error;
       return res.status(status).json({ error: message });
     }
-    res.json({ success: true });
+    
     for (const event of events) {
       await processApiEvent(event, formId);
     }
+
+    res.json({ success: true });
   }
   // Unknown HTTP Method
   else {

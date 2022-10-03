@@ -14,7 +14,6 @@ export default async function handle(
     origin: "*",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
-
   // Check Authentication
   const session = await getSession({ req: req });
   if (!session) {
