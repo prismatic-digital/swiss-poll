@@ -1,7 +1,7 @@
 import { handleWebhook } from "../components/pipelines/webhook";
-import { capturePosthogEvent } from "./posthog";
+// import { capturePosthogEvent } from "./posthog";
 import { prisma } from "./prisma";
-import { sendTelemetry } from "./telemetry";
+// import { sendTelemetry } from "./telemetry";
 import { ApiEvent } from "./types";
 
 type validationError = {
