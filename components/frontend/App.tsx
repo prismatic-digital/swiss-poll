@@ -77,7 +77,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     placeholder={block.data.placeholder}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -91,7 +91,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     placeholder={block.data.placeholder}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -105,7 +105,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     icon={<EnvelopeIcon className="w-5 h-5" />}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -119,7 +119,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     options={block.data.options.map((o) => o.label)}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -133,7 +133,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     options={block.data.options.map((o) => o.label)}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -146,7 +146,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     placeholder={block.data.placeholder}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -160,7 +160,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     icon={<PhoneIcon className="w-5 h-5" />}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
@@ -184,7 +184,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     icon={<GlobeAltIcon className="w-5 h-5" />}
                     classNames={{
                       label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800 sm:truncate",
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
                     }}
                     required={block.data.required}
                   />
