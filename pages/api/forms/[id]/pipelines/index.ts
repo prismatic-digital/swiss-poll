@@ -16,7 +16,6 @@ export default async function handle(
     origin: "*",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
-  console.log('yoooo');
   // check if session exist
   const session = await getSession({ req: req });
   if (!session) {

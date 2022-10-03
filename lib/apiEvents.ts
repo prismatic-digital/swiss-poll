@@ -34,7 +34,6 @@ export const validateEvents = (
 };
 
 export const processApiEvent = async (event: ApiEvent, formId) => {
-  console.log(event);
   // save submission
   if (event.type === "pageSubmission") {
     const data = event.data;

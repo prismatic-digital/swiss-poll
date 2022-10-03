@@ -4,12 +4,14 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/solid";
 import { SnoopElement, SnoopForm, SnoopPage } from "@snoopforms/react";
-import { useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import { generateId } from "../../lib/utils";
 import Loading from "../Loading";
 import ResultsSummary from "../results/ResultsSummary";
 
 export default function App({ id = "", formId, blocks, localOnly = false }) {
+  const [loading, setLoading] = useState(false);
+  const submitButton = useRef(null);
   const pages = useMemo(() => {
     const pages = [];
     let currentPage = {
@@ -39,6 +41,11 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
   }, [blocks, formId]);
 
   if (!pages) return <Loading />;
+
+  const handleSubmit = () => {
+    setLoading(true);
+    submitButton.current.click();
+  };
 
   return (
     <div className="w-full px-5 py-5">
@@ -165,15 +172,49 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     required={block.data.required}
                   />
                 ) : block.type === "submitButton" ? (
-                  <SnoopElement
-                    name="submit"
-                    type="submit"
-                    label={block.data.label}
-                    classNames={{
-                      button:
-                        "inline-flex items-center px-4 py-3 text-sm font-medium text-white bg-gray-700 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
-                    }}
-                  />
+                  // <SnoopElement
+                  //   name="submit"
+                  //   type="submit"
+                  //   label={block.data.label}
+                  //   classNames={{
+                  //     button:
+                  //       "inline-flex items-center px-4 py-3 text-sm font-medium text-white bg-gray-700 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 focus:opacity-50",
+                  //   }}
+                  //   onClick={}
+                  // />
+                  <>
+                    <button ref={submitButton} type="submit" className="hidden">Submit</button>
+                    <button
+                      disabled={loading}
+                      onClick={handleSubmit}
+                      type="submit"
+                      className="inline-flex items-center px-4 py-3 text-sm font-medium leading-4 text-white border border-transparent rounded-md shadow-sm bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 disabled:opacity-70"
+                    >
+                      {loading && (
+                        <svg
+                          className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      )}
+                      {block.data.label || "Submit"}
+                    </button>
+                  </>
                 ) : block.type === "websiteQuestion" ? (
                   <SnoopElement
                     type="website"
