@@ -144,7 +144,7 @@ export default function FormList() {
                                               className="w-5 h-5 mr-3 text-ui-gray-dark"
                                               aria-hidden="true"
                                             />
-                                            <span>Delete form</span>
+                                            <span>Delete Form</span>
                                           </button>
                                         )}
                                       </Menu.Item>
