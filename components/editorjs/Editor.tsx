@@ -130,7 +130,7 @@ const Editor = ({
           inlineToolbar: true,
           config: {
             placeholder:
-              "Start with your content or hit tab-key to insert block",
+              "Start with your content or hit tab key to insert block",
           },
         },
         header: {
