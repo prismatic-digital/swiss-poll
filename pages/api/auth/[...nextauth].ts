@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import getConfig from "next/config";
+// import getConfig from "next/config";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "../../../lib/prisma";
 import { verifyPassword } from "../../../lib/auth";
 import { verifyToken } from "../../../lib/jwt";
 
-const { publicRuntimeConfig } = getConfig();
+// const { publicRuntimeConfig } = getConfig();
 
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   return await NextAuth(req, res, {
