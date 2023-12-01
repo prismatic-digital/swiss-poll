@@ -1,11 +1,6 @@
 import useSWR from "swr";
-import { Schema, SubmissionSession, SubmissionSummary } from "./types";
+import { Schema, SubmissionSession, SubmissionSummary, Summary } from "./types";
 import { fetcher } from "./utils";
-
-interface Summary {
-  count: number,
-  label: string,
-}
 
 export const useSubmissionSessions = (formId: string) => {
   const { data, error, mutate } = useSWR(
@@ -151,25 +146,22 @@ export const getSubmissionSummary = (
                   optionInSummary.summary += 1;
                 }
               } else if (elementInSummary.type === "likert") {
-                console.log(elementInSummary);
                 elementInSummary.rows.map((row) => {
-                  if (!("summary" in row)) {
-                    row.summary = [] as Summary[];
-                    row.summary.push(elementInSummary.columns.map((column) => ({
+                  if (row.summary === undefined) {
+                    row.summary = elementInSummary.columns.map((column) => ({
                       count: 0,
                       label: column.label,
-                    } as Summary)));
+                    }));
                   }
                   Object.keys(elementValue).map(function (k) {
                     const optionInSummary = row.summary.find(
                       (o) => o.label === elementValue[k]
                     );
-                    
+
                     if (typeof optionInSummary !== "undefined") {
                       if (row.label === k) {
                         optionInSummary.count += 1;
                       }
-                      
                     }
                   });
                 });

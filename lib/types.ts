@@ -90,10 +90,15 @@ export type SubmissionSummaryOption = {
   summary: number;
 };
 
+export type Summary = {
+  count: number;
+  label: string;
+}
+
 export type SubmissionSummaryRow = {
   label: string;
   id: string;
-  summary: [];
+  summary: Summary[];
 };
 
 export type SubmissionSummaryColumn = {
