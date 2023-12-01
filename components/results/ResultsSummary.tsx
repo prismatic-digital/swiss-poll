@@ -11,6 +11,7 @@ import AnalyticsCard from "./AnalyticsCard";
 import Loading from "../Loading";
 import TextResults from "./summary/TextResults";
 import ChoiceResults from "./summary/ChoiceResults";
+import LikertResults from "./summary/LikertResults";
 
 export default function ResultsSummary({ formId, showCards = true }) {
   const { submissionSessions, isLoadingSubmissionSessions } =
@@ -56,7 +57,7 @@ export default function ResultsSummary({ formId, showCards = true }) {
   if (!summary || !insights) {
     return <Loading />;
   }
-
+  
   return (
     <>
       {showCards && (
@@ -96,6 +97,8 @@ export default function ResultsSummary({ formId, showCards = true }) {
                       <TextResults element={element} />
                     ) : ["checkbox", "radio"].includes(element.type) ? (
                       <ChoiceResults element={element} />
+                    ) : ["likert"].includes(element.type) ? (
+                      <LikertResults element={element} />
                     ) : null
                   )}
                 </div>

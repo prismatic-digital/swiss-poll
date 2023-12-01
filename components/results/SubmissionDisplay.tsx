@@ -24,7 +24,26 @@ export default function SubmissionDisplay({ formId, submissionSession }) {
         {submission.pages.map((page) =>
           page.elements?.map(
             (element) =>
-              element.type !== "submit" && (
+              element.type !== "submit" &&
+              (element.type === "likert" ? (
+                <li key={element.name} className="py-5">
+                  <p className="text-sm font-semibold text-gray-800">
+                    {element.label}
+                  </p>
+                  <table className="pt-1 text-sm w-full text-gray-600 whitespace-pre-line">
+                    <tbody>
+                      {Object.keys(element.value).map(function (k) {
+                        return (
+                          <tr key={k}>
+                            <td>{k}</td>
+                            <td>{element.value[k]}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </li>
+              ) : (
                 <li key={element.name} className="py-5">
                   <p className="text-sm font-semibold text-gray-800">
                     {element.label}
@@ -39,7 +58,7 @@ export default function SubmissionDisplay({ formId, submissionSession }) {
                     {element.value || "[not provided]"}
                   </p>
                 </li>
-              )
+              ))
           )
         )}
       </ul>

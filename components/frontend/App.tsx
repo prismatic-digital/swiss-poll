@@ -3,7 +3,7 @@ import {
   EnvelopeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/solid";
-import { SnoopElement, SnoopForm, SnoopPage } from "@snoopforms/react";
+import { SnoopElement, SnoopForm, SnoopPage } from "swisspoll-react";
 import { useMemo, useRef, useState } from "react";
 import { generateId } from "../../lib/utils";
 import Loading from "../Loading";
@@ -70,11 +70,13 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                 ) : block.type === "header" ? (
                   block.data.level === 1 ? (
                     <h1 className="ce-header">{block.data.text}</h1>
-                  ) : block.level === 2 ? (
+                  ) : block.data.level === 2 ? (
                     <h2 className="ce-header">{block.data.text}</h2>
                   ) : block.data.level === 3 ? (
                     <h3 className="ce-header">{block.data.text}</h3>
-                  ) : null
+                  ) : (
+                    block.data.level
+                  )
                 ) : block.type === "textQuestion" ? (
                   <SnoopElement
                     type="text"
@@ -144,6 +146,20 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     }}
                     required={block.data.required}
                   />
+                ) : block.type === "LikertScaleQuestion" ? (
+                  <SnoopElement
+                    type="likert"
+                    name={block.id}
+                    label={block.data.label}
+                    help={block.data.help}
+                    rows={block.data.rows}
+                    columns={block.data.columns}
+                    classNames={{
+                      label:
+                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                    }}
+                    required={block.data.required}
+                  />
                 ) : block.type === "numberQuestion" ? (
                   <SnoopElement
                     type="number"
@@ -183,7 +199,9 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                   //   onClick={}
                   // />
                   <>
-                    <button ref={submitButton} type="submit" className="hidden">Submit</button>
+                    <button ref={submitButton} type="submit" className="hidden">
+                      Submit
+                    </button>
                     <button
                       disabled={loading}
                       onClick={handleSubmit}
@@ -237,7 +255,18 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
           </SnoopPage>
         ))}
       </SnoopForm>
-      <div className="w-full max-w-3xl mx-auto text-[11px] text-slate-500 text-right mt-3">Questionnaire fourni par <a className="underline" href="https://www.swiss-poll.ch/" rel="noreferrer" target="_blank">SwissPoll</a>, hébergé en Suisse</div>
+      <div className="w-full max-w-3xl mx-auto text-[11px] text-slate-500 text-right mt-3">
+        Questionnaire fourni par{" "}
+        <a
+          className="underline"
+          href="https://www.swiss-poll.ch/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          SwissPoll
+        </a>
+        , hébergé en Suisse
+      </div>
     </div>
   );
 }

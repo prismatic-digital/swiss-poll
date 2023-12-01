@@ -39,6 +39,7 @@ export default async function handle(
   // Optional fields in body: title, published, finishedOnboarding, elements, elementsDraft
   else if (req.method === "POST") {
     const data = { ...req.body, updatedAt: new Date() };
+    //console.log(data);
     const prismaRes = await prisma.form.update({
       where: { id: formId },
       data,

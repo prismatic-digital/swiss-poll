@@ -5,6 +5,7 @@ import {
   HashtagIcon,
   Bars4Icon,
   PhoneIcon,
+  TableCellsIcon
 } from "@heroicons/react/24/outline";
 import { IoMdRadioButtonOn } from "react-icons/io";
 import { classNames } from "../../../lib/utils";
@@ -41,6 +42,10 @@ export const elementTypes = [
   {
     type: "website",
     icon: GlobeAltIcon,
+  },
+  {
+    type: "likert",
+    icon: TableCellsIcon,
   },
 ];
 
