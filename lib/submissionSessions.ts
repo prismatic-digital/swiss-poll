@@ -2,6 +2,11 @@ import useSWR from "swr";
 import { Schema, SubmissionSession, SubmissionSummary } from "./types";
 import { fetcher } from "./utils";
 
+interface Summary {
+  count: number,
+  label: string,
+}
+
 export const useSubmissionSessions = (formId: string) => {
   const { data, error, mutate } = useSWR(
     () => `/api/forms/${formId}/submissionSessions`,
@@ -146,12 +151,14 @@ export const getSubmissionSummary = (
                   optionInSummary.summary += 1;
                 }
               } else if (elementInSummary.type === "likert") {
+                console.log(elementInSummary);
                 elementInSummary.rows.map((row) => {
                   if (!("summary" in row)) {
-                    row.summary = elementInSummary.columns.map((column) => ({
+                    row.summary = [] as Summary[];
+                    row.summary.push(elementInSummary.columns.map((column) => ({
                       count: 0,
                       label: column.label,
-                    }));
+                    } as Summary)));
                   }
                   Object.keys(elementValue).map(function (k) {
                     const optionInSummary = row.summary.find(
