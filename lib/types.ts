@@ -86,7 +86,7 @@ export type SubmissionSummaryElement = {
 
 export type SubmissionSummaryOption = {
   label: string;
-  id: string;
+  value: string;
   summary: number;
 };
 
