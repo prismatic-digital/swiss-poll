@@ -193,7 +193,7 @@ const LikertScaleQuestion = (props) => {
                     )}
                   </div>
                 </td>
-                {choiceData.columns.map((column, columnIdx) => (
+                {choiceData.columns.map((column) => (
                   <td key={`${column.label}-${row.label}`} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                     <span
                       className={classNames(
