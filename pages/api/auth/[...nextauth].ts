@@ -126,15 +126,16 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
       }),
     ],
     callbacks: {
-      async signIn({ user }) {
-        if (user.emailVerified || publicRuntimeConfig.emailVerificationDisabled) {
-          return true;
-        } else {
-          // Return false to display a default error message or you can return a URL to redirect to
-          return `/auth/verification-requested?email=${encodeURIComponent(
-            user.email
-          )}`;
-        }
+      async signIn() {
+        // if (user.emailVerified || publicRuntimeConfig.emailVerificationDisabled) {
+        //   return true;
+        // } else {
+        //   // Return false to display a default error message or you can return a URL to redirect to
+        //   return `/auth/verification-requested?email=${encodeURIComponent(
+        //     user.email
+        //   )}`;
+        // }
+        return true;
       },
     },
     pages: {
