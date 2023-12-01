@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Schema, SubmissionSession, SubmissionSummary, Summary } from "./types";
+import { Schema, SubmissionSession, SubmissionSummary } from "./types";
 import { fetcher } from "./utils";
 
 export const useSubmissionSessions = (formId: string) => {
