@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+import { authOptions } from '../../../auth/[...nextauth]';
+import { getServerSession } from "next-auth/next"
 import NextCors from "nextjs-cors";
 import { formHasOwnership } from "../../../../../lib/api";
 import { prisma } from "../../../../../lib/prisma";
@@ -17,7 +18,7 @@ export default async function handle(
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
   // check if session exist
-  const session = await getSession({ req: req });
+  const session = await getServerSession(req, res, authOptions)
   if (!session) {
     return res.status(401).json({ message: "Not authenticated" });
   }

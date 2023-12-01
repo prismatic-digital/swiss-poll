@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+import { authOptions } from '../../../auth/[...nextauth]';
+import { getServerSession } from "next-auth/next"
 import { formHasOwnership } from "../../../../../lib/api";
 import { prisma } from "../../../../../lib/prisma";
 
@@ -8,7 +9,7 @@ export default async function handle(
   res: NextApiResponse
 ) {
   // Check Authentication
-  const session = await getSession({ req: req });
+  const session = await getServerSession(req, res, authOptions);
   if (!session) {
     return res.status(401).json({ message: "Not authenticated" });
   }
@@ -25,6 +26,7 @@ export default async function handle(
   // GET /api/forms/:id/nocodeform
   // Get noCodeForm for a form with specific id
   if (req.method === "GET") {
+    console.log('formid', formId)
     const data = await prisma.noCodeForm.findUnique({
       where: {
         formId: formId,
@@ -35,6 +37,7 @@ export default async function handle(
         },
       },
     });
+    console.log(data);
     return res.json(data);
   }
   // POST /api/forms/:id/nocodeform
