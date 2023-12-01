@@ -93,7 +93,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                 ) : block.type === "textareaQuestion" ? (
                   <SnoopElement
                     type="textarea"
-                    rows={4}
+                    rowsNumber={4}
                     name={block.id}
                     label={block.data.label}
                     help={block.data.help}
