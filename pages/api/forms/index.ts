@@ -16,8 +16,6 @@ export default async function handle(
     return res.status(401).json({ message: "Not authenticated" });
   }
 
-  console.log(session);
-
   // GET /api/forms
   // Gets all forms of a user
   if (req.method === "GET") {

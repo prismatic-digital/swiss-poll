@@ -26,7 +26,6 @@ export default async function handle(
   // GET /api/forms/:id/nocodeform
   // Get noCodeForm for a form with specific id
   if (req.method === "GET") {
-    console.log('formid', formId)
     const data = await prisma.noCodeForm.findUnique({
       where: {
         formId: formId,
@@ -37,7 +36,6 @@ export default async function handle(
         },
       },
     });
-    console.log(data);
     return res.json(data);
   }
   // POST /api/forms/:id/nocodeform

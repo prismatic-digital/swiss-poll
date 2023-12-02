@@ -25,7 +25,6 @@ const DEFAULT_INITIAL_DATA = () => {
 };
 
 const LikertScaleQuestion = (props) => {
-  console.log('props : ', props.data.columns);
   const [choiceData, setChoiceData] = React.useState(
     props.data.columns.length > 0 || props.data.rows.length > 0
       ? props.data
@@ -63,14 +62,10 @@ const LikertScaleQuestion = (props) => {
   };
 
   const onDeleteColumn = (optionIdx) => {
-    
-    console.log(optionIdx);
     const newData = {
       ...choiceData,
     };
-    console.log(newData);
     newData.columns.splice(optionIdx, 1);
-    console.log(newData);
     updateData(newData);
   };
 
