@@ -3,13 +3,13 @@
 }
 
 h1.ce-header {
-  @apply pb-5 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate;
+  @apply pb-5 text-2xl font-bold leading-7 sm:text-3xl sm:truncate;
 }
 
 h2.ce-header {
-  @apply pb-3 text-xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate;
+  @apply pb-3 text-xl font-bold leading-7 sm:text-2xl sm:truncate;
 }
 
 h3.ce-header {
-  @apply pb-2 text-lg font-bold leading-7 text-gray-900 sm:text-xl sm:truncate;
+  @apply pb-2 text-lg font-bold leading-7 sm:text-xl sm:truncate;
 }

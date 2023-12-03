@@ -95,10 +95,10 @@
 
 @layer components {
   .bg-snoopfade {
-    @apply bg-gradient-to-br from-red to-red-500 hover:to-red;
+    @apply bg-gradient-to-br from-ui-green to-ui-green-500 hover:to-ui-green;
   }
   .text-snoopfade {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-red to-red-500 hover:to-red;
+    @apply text-transparent bg-clip-text bg-gradient-to-br from-ui-green to-ui-green-500 hover:to-ui-green;
   }
 }
 

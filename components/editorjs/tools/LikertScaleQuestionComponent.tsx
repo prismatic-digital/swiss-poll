@@ -151,7 +151,6 @@ const LikertScaleQuestion = (props) => {
                         onClick={() => onDeleteColumn(columnIdx)}
                         className="invisible group-hover:visible"
                       >
-                        {columnIdx}
                         <TrashIcon
                           className="w-5 h-5 text-ui-gray-medium"
                           aria-hidden="true"

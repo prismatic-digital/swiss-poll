@@ -16,7 +16,6 @@ export default function App({
   localOnly = false,
   noCodeForm,
 }) {
-  console.log(noCodeForm);
   const [loading, setLoading] = useState(false);
   const submitButton = useRef(null);
   const pages = useMemo(() => {
@@ -73,14 +72,42 @@ export default function App({
             {page.blocks.map((block) => (
               <div key={block.id}>
                 {block.type === "paragraph" ? (
-                  <p className="ce-paragraph">{block.data.text}</p>
+                  <p
+                    className={classNames(
+                      `text-${noCodeForm.textColor}`,
+                      "ce-paragraph"
+                    )}
+                  >
+                    {block.data.text}
+                  </p>
                 ) : block.type === "header" ? (
                   block.data.level === 1 ? (
-                    <h1 className="ce-header">{block.data.text}</h1>
+                    <h1
+                      className={classNames(
+                        `text-${noCodeForm.textColor}`,
+                        "ce-header"
+                      )}
+                    >
+                      {block.data.text}
+                    </h1>
                   ) : block.data.level === 2 ? (
-                    <h2 className="ce-header">{block.data.text}</h2>
+                    <h2
+                      className={classNames(
+                        `text-${noCodeForm.textColor}`,
+                        "ce-header"
+                      )}
+                    >
+                      {block.data.text}
+                    </h2>
                   ) : block.data.level === 3 ? (
-                    <h3 className="ce-header">{block.data.text}</h3>
+                    <h3
+                      className={classNames(
+                        `text-${noCodeForm.textColor}`,
+                        "ce-header"
+                      )}
+                    >
+                      {block.data.text}
+                    </h3>
                   ) : (
                     block.data.level
                   )
@@ -118,8 +145,7 @@ export default function App({
                     placeholder={block.data.placeholder}
                     icon={<EnvelopeIcon className="w-5 h-5" />}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -132,8 +158,7 @@ export default function App({
                     help={block.data.help}
                     options={block.data.options.map((o) => o.label)}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -146,8 +171,7 @@ export default function App({
                     help={block.data.help}
                     options={block.data.options.map((o) => o.label)}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -160,8 +184,7 @@ export default function App({
                     rows={block.data.rows}
                     columns={block.data.columns}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -173,8 +196,7 @@ export default function App({
                     help={block.data.help}
                     placeholder={block.data.placeholder}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -187,8 +209,7 @@ export default function App({
                     placeholder={block.data.placeholder}
                     icon={<PhoneIcon className="w-5 h-5" />}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -250,8 +271,7 @@ export default function App({
                     placeholder={block.data.placeholder}
                     icon={<GlobeAltIcon className="w-5 h-5" />}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
