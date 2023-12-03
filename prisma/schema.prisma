@@ -45,6 +45,9 @@ model NoCodeForm {
   blocksDraft         Json      @default("[]")
   published           Boolean   @default(false)
   closed              Boolean   @default(false)
+  textColor           String    @default("gray-800")
+  backgroundColor     String    @default("white")
+  buttonsColor        String    @default("slate-600")
 }
 
 model Pipeline {

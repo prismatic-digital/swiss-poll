@@ -5,11 +5,18 @@ import {
 } from "@heroicons/react/24/solid";
 import { SnoopElement, SnoopForm, SnoopPage } from "swisspoll-react";
 import { useMemo, useRef, useState } from "react";
-import { generateId } from "../../lib/utils";
+import { generateId, classNames } from "../../lib/utils";
 import Loading from "../Loading";
 import ResultsSummary from "../results/ResultsSummary";
 
-export default function App({ id = "", formId, blocks, localOnly = false }) {
+export default function App({
+  id = "",
+  formId,
+  blocks,
+  localOnly = false,
+  noCodeForm,
+}) {
+  console.log(noCodeForm);
   const [loading, setLoading] = useState(false);
   const submitButton = useRef(null);
   const pages = useMemo(() => {
@@ -85,8 +92,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     help={block.data.help}
                     placeholder={block.data.placeholder}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -99,8 +105,7 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                     help={block.data.help}
                     placeholder={block.data.placeholder}
                     classNames={{
-                      label:
-                        "mt-4 mb-2 block text-lg font-bold leading-7 text-gray-800",
+                      label: `mt-4 mb-2 block text-lg font-bold leading-7 text-${noCodeForm.textColor}`,
                     }}
                     required={block.data.required}
                   />
@@ -206,7 +211,10 @@ export default function App({ id = "", formId, blocks, localOnly = false }) {
                       disabled={loading}
                       onClick={handleSubmit}
                       type="submit"
-                      className="inline-flex items-center px-4 py-3 text-sm font-medium leading-4 text-white border border-transparent rounded-md shadow-sm bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 disabled:opacity-70"
+                      className={classNames(
+                        `bg-${noCodeForm.buttonsColor} hover:bg-${noCodeForm.buttonsColor} focus:ring-${noCodeForm.buttonsColor}`,
+                        "inline-flex items-center px-4 py-3 text-sm font-medium leading-4 text-white border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-70"
+                      )}
                     >
                       {loading && (
                         <svg
