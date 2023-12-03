@@ -46,6 +46,7 @@ function SharePage({}) {
         blocks={noCodeForm.blocksDraft}
         localOnly={true}
         formId={formId}
+        noCodeForm={noCodeForm}
       />
     </LayoutPreview>
   );
