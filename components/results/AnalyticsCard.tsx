@@ -24,7 +24,7 @@ const AnalyticsCard: React.FC<Props> = ({
         <dt className="inline-flex text-base font-normal text-gray-900 has-tooltip">
           {label}{" "}
           {toolTipText && (
-            <QuestionMarkCircleIcon className="w-4 h-4 ml-1 text-red hover:text-ui-gray-dark" />
+            <QuestionMarkCircleIcon className="w-4 h-4 ml-1 text-ui-green hover:text-ui-gray-dark" />
           )}
           {toolTipText && (
             <span className="flex p-1 px-4 -mt-6 -ml-8 text-xs text-center text-white bg-gray-600 rounded shadow-lg grow tooltip">
@@ -47,7 +47,7 @@ const AnalyticsCard: React.FC<Props> = ({
               className={classNames(
                 trend >= 0
                   ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800",
+                  : "bg-ui-green-100 text-ui-green-800",
                 "inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0"
               )}
             >
@@ -58,7 +58,7 @@ const AnalyticsCard: React.FC<Props> = ({
                 />
               ) : (
                 <ArrowDownIcon
-                  className="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500"
+                  className="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-ui-green-500"
                   aria-hidden="true"
                 />
               )}

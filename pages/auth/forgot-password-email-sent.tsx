@@ -30,7 +30,7 @@ export default function ForgotPasswordEmailSent() {
                 <Link href="/auth/signin">
                   <a
                     href=""
-                    className="text-xs text-red hover:text-red-600 block"
+                    className="text-xs text-ui-green hover:text-ui-green-600 block"
                   >
                     Back to login
                   </a>

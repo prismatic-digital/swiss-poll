@@ -55,7 +55,7 @@ export const getElementTypeIcon = (type) => {
     <span
       className={classNames(
         `text-white`,
-        `bg-red-500`,
+        `bg-ui-green-500`,
         "rounded-lg inline-flex p-3 ring-4 ring-white"
       )}
     >

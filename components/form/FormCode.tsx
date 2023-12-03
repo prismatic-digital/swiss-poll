@@ -181,7 +181,7 @@ export default function FormCode({ formId }) {
           <p>
             Your form is running? Go to{" "}
             <Link href={`/forms/${formId}/preview`}>
-              <a className="underline text-red">Pipelines</a>
+              <a className="underline text-ui-green">Pipelines</a>
             </Link>
           </p>
         </div>

@@ -26,12 +26,12 @@ const StandardButton: React.FC<Props> = ({
   return (
     <button
       className={classNames(
-        `inline-flex items-center rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500`,
+        `inline-flex items-center rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500`,
         disabled ? "disabled:opacity-50" : "",
         fullwidth ? " w-full justify-center " : "",
         small ? "px-2.5 py-1.5 text-xs" : "px-5 py-3 text-sm",
         icon ? "px-1.5 py-1.5 text-xs" : "px-5 py-3 text-sm",
-        secondary ? "bg-ui-gray-light text-red" : "bg-snoopfade text-white"
+        secondary ? "bg-ui-gray-light text-ui-green" : "bg-snoopfade text-white"
       )}
       onClick={onClick}
       disabled={disabled}

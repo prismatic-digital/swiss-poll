@@ -115,7 +115,7 @@ export default function DownloadResponses({ formId }) {
                 <button
                   onClick={() => download("csv")}
                   className={`${
-                    active ? "bg-red-500 text-white" : "text-gray-900"
+                    active ? "bg-ui-green-500 text-white" : "text-gray-900"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   Download as CSV
@@ -127,7 +127,7 @@ export default function DownloadResponses({ formId }) {
                 <button
                   onClick={() => download("excel")}
                   className={`${
-                    active ? "bg-red-500 text-white" : "text-gray-900"
+                    active ? "bg-ui-green-500 text-white" : "text-gray-900"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                 >
                   Download as Excel

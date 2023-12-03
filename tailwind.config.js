@@ -5,6 +5,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    {
+      pattern: /bg-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
+  ],
   theme: {
     extend: {
       strokeWidth: {
@@ -34,7 +39,7 @@ module.exports = {
         full: "9999px",
       },
       colors: {
-        red: {
+        'ui-green': {
           DEFAULT: "#268484",
           50: "#268484",
           100: "#268484",
@@ -46,6 +51,19 @@ module.exports = {
           700: "#268484",
           800: "#268484",
           900: "#268484",
+        },
+        red: {
+          DEFAULT: "#ef4444",
+          50: "#fef2f2",
+          100: "#fee2e2",
+          200: "#fecaca",
+          300: "#fca5a5",
+          400: "#f87171",
+          500: "#ef4444",
+          600: "#dc2626",
+          700: "#b91c1c",
+          800: "#991b1b",
+          900: "#7f1d1d",
         },
         green: {
           DEFAULT: "#0be881",

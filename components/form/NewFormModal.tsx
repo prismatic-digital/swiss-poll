@@ -107,7 +107,7 @@ export default function NewFormModal({
                       <input
                         type="text"
                         name="name"
-                        className="block w-full p-2 mb-6 border-none rounded bg-ui-gray-light focus:ring-2 focus:ring-red sm:text-sm placeholder:font-extralight placeholder:text-ui-gray-medium"
+                        className="block w-full p-2 mb-6 border-none rounded bg-ui-gray-light focus:ring-2 focus:ring-ui-green sm:text-sm placeholder:font-extralight placeholder:text-ui-gray-medium"
                         placeholder="e.g. Customer Research Survey"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -131,7 +131,7 @@ export default function NewFormModal({
                             classNames(
                               checked ? "border-transparent" : "",
                               active
-                                ? "border-red ring-2 ring-red"
+                                ? "border-ui-green ring-2 ring-ui-green"
                                 : "bg-ui-gray-lighter",
                               "relative bg-white border rounded shadow-sm p-4 flex cursor-pointer focus:outline-none"
                             )
@@ -158,7 +158,7 @@ export default function NewFormModal({
                               <CheckCircleIcon
                                 className={classNames(
                                   !checked ? "hidden" : "",
-                                  "h-5 w-5 text-red"
+                                  "h-5 w-5 text-ui-green"
                                 )}
                                 aria-hidden="true"
                               />
@@ -172,7 +172,7 @@ export default function NewFormModal({
                               <span
                                 className={classNames(
                                   active ? "border" : "border-2",
-                                  checked ? "border-red" : "border-transparent",
+                                  checked ? "border-ui-green" : "border-transparent",
                                   "absolute -inset-px rounded pointer-events-none"
                                 )}
                                 aria-hidden="true"

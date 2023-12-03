@@ -84,7 +84,7 @@ const SingleChoiceQuestion = (props) => {
           placeholder="Your Question"
         />
         {choiceData.required && (
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-500 pointer-events-none">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-ui-green-500 pointer-events-none">
             *
           </div>
         )}
@@ -150,8 +150,8 @@ const SingleChoiceQuestion = (props) => {
               updateData(newData);
             }}
             className={classNames(
-              choiceData.multipleChoice ? "bg-red-600" : "bg-gray-200",
-              "relative inline-flex flex-shrink-0 h-4 w-7 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              choiceData.multipleChoice ? "bg-ui-green-600" : "bg-gray-200",
+              "relative inline-flex flex-shrink-0 h-4 w-7 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500"
             )}
           >
             <span
