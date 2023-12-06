@@ -31,7 +31,7 @@ function NoCodeFormPublic() {
     <BaseLayoutUnauthorized title="snoopForms">
       <div className={classNames(
         `bg-${noCodeForm.backgroundColor}`,
-        "flex flex-col justify-between h-screen"
+        "flex flex-col justify-between min-h-screen"
       )}>
         {noCodeForm.closed ? (
           <div className="flex min-h-screen bg-ui-gray-light">
