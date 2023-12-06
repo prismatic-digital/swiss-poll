@@ -2,15 +2,8 @@ import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
 
-export default function LikertResults({ element }) {
-  const colors = [
-    "#45B594",
-    "#F2BF2E",
-    "#EA5246",
-    "#57C2DD",
-    "#C285B9",
-    "#EE763B",
-  ];
+export default function LikertResults({ element, colors }) {
+
   const data = {
     labels: element.rows.map((o) => o.label),
     datasets: element.columns.map((column, i) => {

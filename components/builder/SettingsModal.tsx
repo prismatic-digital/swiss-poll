@@ -26,6 +26,48 @@ const colors = [
 ];
 const variants = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
+const chartColors = [
+  { name: "red-300", hex: "#fca5a5" },
+  { name: "red-600", hex: "#dc2626" },
+  { name: "red-900", hex: "#7f1d1d" },
+
+  { name: "green-300", hex: "#77febe" },
+  { name: "green-600", hex: "#02b763" },
+  { name: "green-900", hex: "#0b5c38" },
+
+  { name: "orange-300", hex: "#ffdc46" },
+  { name: "orange-600", hex: "#e27f00" },
+  { name: "orange-900", hex: "#7c370b" },
+
+  { name: "blue-300", hex: "#7cdbfd" },
+  { name: "blue-600", hex: "#0190c8" },
+  { name: "blue-900", hex: "#0b506f" },
+
+  { name: "purple-300", hex: "#a8b2e8" },
+  { name: "purple-600", hex: "#4d4cc4" },
+  { name: "purple-900", hex: "#373375" },
+
+  { name: "pink-300", hex: "#faa7b4" },
+  { name: "pink-600", hex: "#da2453" },
+  { name: "pink-900", hex: "#84173d" },
+
+  { name: "slate-300", hex: "#cbd5e1" },
+  { name: "slate-600", hex: "#475569" },
+  { name: "slate-900", hex: "#0f172a" },
+
+  { name: "teal-300", hex: "#50f8ef" },
+  { name: "teal-600", hex: "#009da1" },
+  { name: "teal-900", hex: "#057d80" },
+
+  { name: "yellow-300", hex: "#ffdd59" },
+  { name: "yellow-600", hex: "#dd7d02" },
+  { name: "yellow-900", hex: "#7a380d" },
+
+  { name: "gray-300", hex: "#aebdcb" },
+  { name: "gray-600", hex: "#4e657b" },
+  { name: "gray-900", hex: "#323d48" },
+];
+
 export default function SettingsModal({ open, setOpen, formId }) {
   const { noCodeForm, isLoadingNoCodeForm, mutateNoCodeForm } =
     useNoCodeForm(formId);
@@ -33,6 +75,7 @@ export default function SettingsModal({ open, setOpen, formId }) {
   const [textColorLoading, setTextColorLoading] = useState(false);
   const [backgroundColorLoading, setBackgroundColorLoading] = useState(false);
   const [buttonsColorLoading, setButtonsColorLoading] = useState(false);
+  const [chartColorsLoading, setChartColorsLoading] = useState(false);
   const [selectedTextColor, setSelectedTextColor] = useState(
     noCodeForm.textColor
   );
@@ -41,6 +84,10 @@ export default function SettingsModal({ open, setOpen, formId }) {
   );
   const [selectedButtonColor, setSelectedButtonColor] = useState(
     noCodeForm.buttonsColor
+  );
+
+  const [chartColorsObject, setChartColorsObject] = useState(
+    noCodeForm.chartColors.colors
   );
 
   useEffect(() => {
@@ -76,6 +123,17 @@ export default function SettingsModal({ open, setOpen, formId }) {
     }, 500);
   }, [selectedButtonColor]);
 
+  useEffect(() => {
+    setChartColorsLoading(true);
+    setTimeout(async () => {
+      const newNoCodeForm = JSON.parse(JSON.stringify(noCodeForm));
+      newNoCodeForm.chartColors = {colors: chartColorsObject};
+      await persistNoCodeForm(newNoCodeForm);
+      mutateNoCodeForm(newNoCodeForm);
+      setChartColorsLoading(false);
+    }, 500);
+  }, [chartColorsObject]);
+
   const toggleClose = async () => {
     setLoading(true);
     setTimeout(async () => {
@@ -90,6 +148,13 @@ export default function SettingsModal({ open, setOpen, formId }) {
           : "Your form is now open for submissions 🎉"
       );
     }, 500);
+  };
+
+  const handleChartColorChanged = (color) => {
+    const obj = color.split("-");
+    let newChartColors = [...chartColorsObject];
+    newChartColors[obj[1]] = obj[0];
+    setChartColorsObject(newChartColors);
   };
 
   if (isLoadingNoCodeForm) {
@@ -122,7 +187,7 @@ export default function SettingsModal({ open, setOpen, formId }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:max-w-4xl sm:w-full sm:p-6 h-screen">
+              <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-scroll text-left transition-all transform bg-white rounded-lg shadow-xl sm:max-w-4xl sm:w-full sm:p-6 h-screen">
                 <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
                   <button
                     type="button"
@@ -139,7 +204,7 @@ export default function SettingsModal({ open, setOpen, formId }) {
                       Settings
                     </h1>
                   </div>
-                  <h3 className="text-lg font-medium leading-6 text-gray-900">
+                  <h3 className="text-xl mt-8 font-medium leading-6 text-gray-900">
                     Access
                   </h3>
                   <div className="w-full mt-2 text-sm text-gray-500">
@@ -192,7 +257,7 @@ export default function SettingsModal({ open, setOpen, formId }) {
                       )}
                     </Switch.Group>
                   </div>
-                  <h3 className="text-lg font-medium leading-6 text-gray-900 mt-5">
+                  <h3 className="text-xl mt-8 font-medium leading-6 text-gray-900">
                     Custom colors
                   </h3>
                   <div className="w-full mt-2 text-sm text-gray-500 flex flex-col gap-3">
@@ -477,97 +542,196 @@ export default function SettingsModal({ open, setOpen, formId }) {
                           </Listbox.Label>
                           {buttonsColorLoading ? (
                             <TailSpin color="#1f2937" height={30} width={30} />
-                          ) : (<div className="relative w-1/3">
-                          <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                            <span className="flex items-center">
-                              <span
-                                className={classNames(
-                                  `bg-${selectedButtonColor}`,
-                                  "h-5 w-5 flex-shrink-0 rounded-full"
-                                )}
-                              ></span>
-                              <span className="ml-3 block truncate">
-                                {selectedButtonColor}
-                              </span>
-                            </span>
-                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                              <ChevronUpDownIcon
-                                className="h-5 w-5 text-gray-400"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          </Listbox.Button>
+                          ) : (
+                            <div className="relative w-1/3">
+                              <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                <span className="flex items-center">
+                                  <span
+                                    className={classNames(
+                                      `bg-${selectedButtonColor}`,
+                                      "h-5 w-5 flex-shrink-0 rounded-full"
+                                    )}
+                                  ></span>
+                                  <span className="ml-3 block truncate">
+                                    {selectedButtonColor}
+                                  </span>
+                                </span>
+                                <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                  <ChevronUpDownIcon
+                                    className="h-5 w-5 text-gray-400"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              </Listbox.Button>
 
-                          <Transition
-                            show={open}
-                            as={Fragment}
-                            leave="transition ease-in duration-100"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                          >
-                            <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                              {colors.map((color) =>
-                                variants.map((variant) => (
-                                  <Listbox.Option
-                                    key={`${color}-${variant}`}
-                                    className={({ active }) =>
-                                      classNames(
-                                        active
-                                          ? "bg-indigo-600 text-white"
-                                          : "text-gray-900",
-                                        "relative cursor-default select-none py-2 pl-3 pr-9"
-                                      )
-                                    }
-                                    value={`${color}-${variant}`}
-                                  >
-                                    {({ selected, active }) => (
-                                      <>
+                              <Transition
+                                show={open}
+                                as={Fragment}
+                                leave="transition ease-in duration-100"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                  {colors.map((color) =>
+                                    variants.map((variant) => (
+                                      <Listbox.Option
+                                        key={`${color}-${variant}`}
+                                        className={({ active }) =>
+                                          classNames(
+                                            active
+                                              ? "bg-indigo-600 text-white"
+                                              : "text-gray-900",
+                                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                                          )
+                                        }
+                                        value={`${color}-${variant}`}
+                                      >
+                                        {({ selected, active }) => (
+                                          <>
+                                            <div className="flex items-center">
+                                              <span
+                                                className={classNames(
+                                                  `bg-${color}-${variant}`,
+                                                  "h-5 w-5 flex-shrink-0 rounded-full"
+                                                )}
+                                              ></span>
+                                              <span
+                                                className={classNames(
+                                                  selected
+                                                    ? "font-semibold"
+                                                    : "font-normal",
+                                                  "ml-3 block truncate"
+                                                )}
+                                              >
+                                                {`${color}-${variant}`}
+                                              </span>
+                                            </div>
+
+                                            {selected ? (
+                                              <span
+                                                className={classNames(
+                                                  active
+                                                    ? "text-white"
+                                                    : "text-indigo-600",
+                                                  "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                )}
+                                              >
+                                                <CheckIcon
+                                                  className="h-5 w-5"
+                                                  aria-hidden="true"
+                                                />
+                                              </span>
+                                            ) : null}
+                                          </>
+                                        )}
+                                      </Listbox.Option>
+                                    ))
+                                  )}
+                                </Listbox.Options>
+                              </Transition>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </Listbox>
+                  </div>
+                  <h3 className="text-xl mt-8 font-medium leading-6 text-gray-900">
+                    Answers colors
+                  </h3>
+                  <div className="w-full mt-2 text-sm text-gray-500 flex flex-col gap-3">
+                    {chartColorsObject.map((selectedColor, index) => (
+                      <Listbox
+                        key={`${selectedColor}-${index}`}
+                        value={selectedColor}
+                        onChange={handleChartColorChanged}
+                      >
+                        {({ open }) => (
+                          <div className="flex items-center justify-between">
+                            <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                              Answer {index + 1}
+                            </Listbox.Label>
+                            {chartColorsLoading ? (
+                              <TailSpin
+                                color="#1f2937"
+                                height={30}
+                                width={30}
+                              />
+                            ) : (
+                              <div className="relative w-1/3">
+                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                  <span className="flex items-center">
+                                    <span
+                                      className={classNames(
+                                        `bg-${
+                                          chartColors.filter(
+                                            (c) => c.hex === selectedColor
+                                          )[0].name
+                                        }`,
+                                        "h-5 w-5 flex-shrink-0 rounded-full"
+                                      )}
+                                    ></span>
+                                    <span className="ml-3 block truncate">
+                                      {
+                                        chartColors.filter(
+                                          (c) => c.hex === selectedColor
+                                        )[0].name
+                                      }
+                                    </span>
+                                  </span>
+                                  <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                    <ChevronUpDownIcon
+                                      className="h-5 w-5 text-gray-400"
+                                      aria-hidden="true"
+                                    />
+                                  </span>
+                                </Listbox.Button>
+
+                                <Transition
+                                  show={open}
+                                  as={Fragment}
+                                  leave="transition ease-in duration-100"
+                                  leaveFrom="opacity-100"
+                                  leaveTo="opacity-0"
+                                >
+                                  <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                    {chartColors.map((color) => (
+                                      <Listbox.Option
+                                        key={`${color.name}`}
+                                        className={({ active }) =>
+                                          classNames(
+                                            active
+                                              ? "bg-indigo-600 text-white"
+                                              : "text-gray-900",
+                                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                                          )
+                                        }
+                                        value={`${color.hex}-${index}`}
+                                      >
                                         <div className="flex items-center">
                                           <span
                                             className={classNames(
-                                              `bg-${color}-${variant}`,
+                                              `bg-${color.name}`,
                                               "h-5 w-5 flex-shrink-0 rounded-full"
                                             )}
                                           ></span>
                                           <span
                                             className={classNames(
-                                              selected
-                                                ? "font-semibold"
-                                                : "font-normal",
-                                              "ml-3 block truncate"
+                                              "ml-3 block truncate font-normal"
                                             )}
                                           >
-                                            {`${color}-${variant}`}
+                                            {`${color.name}`}
                                           </span>
                                         </div>
-
-                                        {selected ? (
-                                          <span
-                                            className={classNames(
-                                              active
-                                                ? "text-white"
-                                                : "text-indigo-600",
-                                              "absolute inset-y-0 right-0 flex items-center pr-4"
-                                            )}
-                                          >
-                                            <CheckIcon
-                                              className="h-5 w-5"
-                                              aria-hidden="true"
-                                            />
-                                          </span>
-                                        ) : null}
-                                      </>
-                                    )}
-                                  </Listbox.Option>
-                                ))
-                              )}
-                            </Listbox.Options>
-                          </Transition>
-                        </div>)}
-                          
-                        </div>
-                      )}
-                    </Listbox>
+                                      </Listbox.Option>
+                                    ))}
+                                  </Listbox.Options>
+                                </Transition>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </Listbox>
+                    ))}
                   </div>
                 </div>
               </Dialog.Panel>

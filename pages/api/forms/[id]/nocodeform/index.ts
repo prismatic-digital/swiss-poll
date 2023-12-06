@@ -43,7 +43,7 @@ export default async function handle(
   // Required fields in body: -
   // Optional fields in body: title, published, finishedOnboarding, elements, elementsDraft
   else if (req.method === "POST") {
-    const { id, createdAt, blocks, blocksDraft, published, closed, textColor, backgroundColor, buttonsColor } = req.body;
+    const { id, createdAt, blocks, blocksDraft, published, closed, textColor, backgroundColor, buttonsColor, chartColors } = req.body;
     const data = {
       id,
       createdAt,
@@ -55,6 +55,7 @@ export default async function handle(
       textColor,
       backgroundColor,
       buttonsColor,
+      chartColors,
       updatedAt: new Date(),
     };
     // create or update record
