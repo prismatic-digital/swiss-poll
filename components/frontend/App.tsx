@@ -4,7 +4,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/solid";
 import { SnoopElement, SnoopForm, SnoopPage } from "swisspoll-react";
-import { useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { generateId, classNames } from "../../lib/utils";
 import Loading from "../Loading";
 import ResultsSummary from "../results/ResultsSummary";
@@ -16,8 +16,8 @@ export default function App({
   localOnly = false,
   noCodeForm,
 }) {
-  const [loading, setLoading] = useState(false);
-  const submitButton = useRef(null);
+  // const [loading, setLoading] = useState(false);
+  // const submitButton = useRef(null);
   const pages = useMemo(() => {
     const pages = [];
     let currentPage = {
@@ -48,11 +48,11 @@ export default function App({
 
   if (!pages) return <Loading />;
 
-  const handleSubmit = () => {
-    setLoading(true);
-    submitButton.current.click();
-    setLoading(false);
-  };
+  // const handleSubmit = () => {
+  //   setLoading(true);
+  //   submitButton.current.click();
+  //   setLoading(false);
+  // };
 
   const css = `:root {
     --hex-color-custom-text: ${noCodeForm.textColor};
