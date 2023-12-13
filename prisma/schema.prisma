@@ -45,9 +45,9 @@ model NoCodeForm {
   blocksDraft         Json      @default("[]")
   published           Boolean   @default(false)
   closed              Boolean   @default(false)
-  textColor           String    @default("gray-800")
-  backgroundColor     String    @default("white")
-  buttonsColor        String    @default("slate-600")
+  textColor           String    @default("#334155")
+  backgroundColor     String    @default("#ffffff")
+  buttonsColor        String    @default("#334155")
   chartColors         Json      @default("{\"colors\":[\"#fca5a5\",\"#77febe\",\"#ffdc46\",\"#7cdbfd\",\"#a8b2e8\",\"#faa7b4\",\"#cbd5e1\",\"#50f8ef\",\"#ffdd59\",\"#aebdcb\"]}")
 }
 
