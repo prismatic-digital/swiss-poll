@@ -161,7 +161,7 @@ const Editor = ({
 
   return (
     <Fragment>
-      <div id={id} />
+      <div id={id}></div>
     </Fragment>
   );
 };
