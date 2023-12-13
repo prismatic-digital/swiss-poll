@@ -67,46 +67,52 @@ const colors = [
   "#9f1239",
 ];
 
-export default function ColorPicker({ selectedColor, setSelectedColor, index = null }) {
+export default function ColorPicker({
+  selectedColor,
+  setSelectedColor,
+  index = null,
+}) {
   let [referenceElement, setReferenceElement] = useState();
 
   let [popperElement, setPopperElement] = useState();
   let { styles, attributes } = usePopper(referenceElement, popperElement);
 
   return (
-    <Popover className="relative w-1/4">
-      <Popover.Button
-        ref={setReferenceElement}
-        className="flex items-center border border-gray-300 rounded-full px-4 py-2 w-full"
-      >
-        <span
-          style={{
-            backgroundColor: `${selectedColor}`,
-          }}
-          className={classNames(
-            selectedColor === '#ffffff' ? "border border-gray-300" : "",
-            "block h-5 w-5 rounded-full mr-2"
-          )}
-        ></span>
-        {selectedColor}
-      </Popover.Button>
+    <>
+      <Popover className="relative w-1/4">
+        <Popover.Button
+          ref={setReferenceElement}
+          className="flex items-center border border-gray-300 rounded-full px-4 py-2 w-full"
+        >
+          <span
+            style={{
+              backgroundColor: `${selectedColor}`,
+            }}
+            className={classNames(
+              selectedColor === "#ffffff" ? "border border-gray-300" : "",
+              "block h-5 w-5 rounded-full mr-2"
+            )}
+          ></span>
+          {selectedColor}
+        </Popover.Button>
 
-      <Popover.Panel
-        ref={setPopperElement}
-        style={styles.popper}
-        {...attributes.popper}
-        className="bg-white absolute z-10 mr-3"
-      >
-        <TwitterPicker
-          width="350px"
-          colors={colors}
-          color={selectedColor}
-          onChangeComplete={(color) => {
-            setSelectedColor(color.hex + (index !== null ? `-${index}` : ``));
-          }}
-          triangle="hide"
-        />
-      </Popover.Panel>
-    </Popover>
+        <Popover.Panel
+          ref={setPopperElement}
+          style={styles.popper}
+          {...attributes.popper}
+          className="bg-white absolute z-10 mr-3"
+        >
+          <TwitterPicker
+            width="350px"
+            colors={colors}
+            color={selectedColor}
+            onChangeComplete={(color) => {
+              setSelectedColor(color.hex + (index !== null ? `-${index}` : ``));
+            }}
+            triangle="hide"
+          />
+        </Popover.Panel>
+      </Popover>
+    </>
   );
 }

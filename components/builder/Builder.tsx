@@ -126,13 +126,15 @@ export default function Builder({ formId }) {
       <div className="w-full h-full mb-20 overflow-auto bg-white">
         <div className="flex justify-center w-full pt-10 pb-56">
           <LimitedWidth>
-            <Editor
-              id="editor"
-              formId={formId}
-              editorRef={editorRef}
-              autofocus={true}
-              initAction={initAction}
-            />
+            {Editor && (
+              <Editor
+                id="editor"
+                formId={formId}
+                editorRef={editorRef}
+                autofocus={true}
+                initAction={initAction}
+              />
+            )}
           </LimitedWidth>
         </div>
       </div>
