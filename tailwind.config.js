@@ -8,10 +8,12 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /bg-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
+      pattern:
+        /bg-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
     },
     {
-      pattern: /text-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
+      pattern:
+        /text-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
     },
   ],
   theme: {
@@ -43,7 +45,7 @@ module.exports = {
         full: "9999px",
       },
       colors: {
-        'ui-green': {
+        "ui-green": {
           DEFAULT: "#268484",
           50: "#268484",
           100: "#268484",
@@ -208,6 +210,42 @@ module.exports = {
         white: {
           DEFAULT: "#ffffff",
         },
+        "custom-text": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-text)"),
+          100: dynamicHex("var(--hex-color-custom-text)"),
+          200: dynamicHex("var(--hex-color-custom-text)"),
+          300: dynamicHex("var(--hex-color-custom-text)"),
+          400: dynamicHex("var(--hex-color-custom-text)"),
+          500: dynamicHex("var(--hex-color-custom-text)"),
+          600: dynamicHex("var(--hex-color-custom-text)"),
+          700: dynamicHex("var(--hex-color-custom-text)"),
+          800: dynamicHex("var(--hex-color-custom-text)"),
+          900: dynamicHex("var(--hex-color-custom-text)"),
+        },
+        "custom-background": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-background)"),
+          100: dynamicHex("var(--hex-color-custom-background)"),
+          200: dynamicHex("var(--hex-color-custom-background)"),
+          300: dynamicHex("var(--hex-color-custom-background)"),
+          400: dynamicHex("var(--hex-color-custom-background)"),
+          500: dynamicHex("var(--hex-color-custom-background)"),
+          600: dynamicHex("var(--hex-color-custom-background)"),
+          700: dynamicHex("var(--hex-color-custom-background)"),
+          800: dynamicHex("var(--hex-color-custom-background)"),
+          900: dynamicHex("var(--hex-color-custom-background)"),
+        },
+        "custom-buttons": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-buttons)"),
+          100: dynamicHex("var(--hex-color-custom-buttons)"),
+          200: dynamicHex("var(--hex-color-custom-buttons)"),
+          300: dynamicHex("var(--hex-color-custom-buttons)"),
+          400: dynamicHex("var(--hex-color-custom-buttons)"),
+          500: dynamicHex("var(--hex-color-custom-buttons)"),
+          600: dynamicHex("var(--hex-color-custom-buttons)"),
+          700: dynamicHex("var(--hex-color-custom-buttons)"),
+          800: dynamicHex("var(--hex-color-custom-buttons)"),
+          900: dynamicHex("var(--hex-color-custom-buttons)"),
+        },
       },
     },
   },
@@ -217,3 +255,7 @@ module.exports = {
     require("@tailwindcss/line-clamp"),
   ],
 };
+
+function dynamicHex(hex) {
+  return `${hex}`;
+}

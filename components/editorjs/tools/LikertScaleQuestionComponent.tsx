@@ -134,7 +134,7 @@ const LikertScaleQuestion = (props) => {
               ></th>
               {choiceData.columns.map((column, columnIdx) => (
                 <th
-                  key={column.label}
+                  key={`${column.label}-${columnIdx}`}
                   scope="col"
                   className="group px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                 >
@@ -164,7 +164,7 @@ const LikertScaleQuestion = (props) => {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {choiceData.rows.map((row, rowIdx) => (
-              <tr key={row.label}>
+              <tr key={`${row.label}-${rowIdx}`}>
                 <td className="group whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                   <div className="flex justify-between items-center">
                     <input
@@ -187,8 +187,8 @@ const LikertScaleQuestion = (props) => {
                     )}
                   </div>
                 </td>
-                {choiceData.columns.map((column) => (
-                  <td key={`${column.label}-${row.label}`} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                {choiceData.columns.map((column, columnIdx) => (
+                  <td key={`${column.label}-${columnIdx}-${row.label}-${rowIdx}`} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                     <span
                       className={classNames(
                         "rounded-full",

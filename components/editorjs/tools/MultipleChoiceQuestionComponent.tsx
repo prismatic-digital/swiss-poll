@@ -92,7 +92,7 @@ const SingleChoiceQuestion = (props) => {
       <div className="mt-2 space-y-2">
         {choiceData.options.map((option, optionIdx) => (
           <div
-            key={option.label}
+            key={`${option.label}-${optionIdx}`}
             className="relative flex items-start pr-2 hover:bg-gray-50 hover:rounded"
           >
             <span className="flex items-center w-full text-sm ">

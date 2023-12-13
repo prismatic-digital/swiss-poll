@@ -27,10 +27,16 @@ function NoCodeFormPublic() {
     );
   }
 
+  const css = `:root {
+    --hex-color-custom-background: ${noCodeForm.backgroundColor};
+  }`
+
   return (
+
     <BaseLayoutUnauthorized title="snoopForms">
+      <style>{css}</style>
       <div className={classNames(
-        `bg-${noCodeForm.backgroundColor}`,
+        `bg-custom-background`,
         "flex flex-col justify-between min-h-screen"
       )}>
         {noCodeForm.closed ? (

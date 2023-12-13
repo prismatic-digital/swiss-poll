@@ -12,14 +12,16 @@ import Loading from "../Loading";
 import TextResults from "./summary/TextResults";
 import ChoiceResults from "./summary/ChoiceResults";
 import LikertResults from "./summary/LikertResults";
-import { useNoCodeForm } from "../../lib/noCodeForm";
+import { useNoCodeFormPublic } from "../../lib/noCodeForm";
 
 export default function ResultsSummary({ formId, showCards = true }) {
   const { submissionSessions, isLoadingSubmissionSessions } =
     useSubmissionSessions(formId);
 
   const { form, isLoadingForm } = useForm(formId);
-  const { noCodeForm } = useNoCodeForm(formId);
+  //const { noCodeForm } = useNoCodeForm(formId);
+  const { noCodeForm } = useNoCodeFormPublic(formId);
+
 
   const insights = useMemo(() => {
     if (!isLoadingSubmissionSessions) {

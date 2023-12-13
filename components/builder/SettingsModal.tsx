@@ -7,66 +7,7 @@ import Loading from "../Loading";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 import { classNames } from "../../lib/utils";
-import { Listbox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
-const colors = [
-  "red",
-  "green",
-  "pink",
-  "purple",
-  "blue",
-  "teal",
-  "amber",
-  "orange",
-  "yellow",
-  "gray",
-  "black",
-  "slate",
-];
-const variants = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-
-const chartColors = [
-  { name: "red-300", hex: "#fca5a5" },
-  { name: "red-600", hex: "#dc2626" },
-  { name: "red-900", hex: "#7f1d1d" },
-
-  { name: "green-300", hex: "#77febe" },
-  { name: "green-600", hex: "#02b763" },
-  { name: "green-900", hex: "#0b5c38" },
-
-  { name: "orange-300", hex: "#ffdc46" },
-  { name: "orange-600", hex: "#e27f00" },
-  { name: "orange-900", hex: "#7c370b" },
-
-  { name: "blue-300", hex: "#7cdbfd" },
-  { name: "blue-600", hex: "#0190c8" },
-  { name: "blue-900", hex: "#0b506f" },
-
-  { name: "purple-300", hex: "#a8b2e8" },
-  { name: "purple-600", hex: "#4d4cc4" },
-  { name: "purple-900", hex: "#373375" },
-
-  { name: "pink-300", hex: "#faa7b4" },
-  { name: "pink-600", hex: "#da2453" },
-  { name: "pink-900", hex: "#84173d" },
-
-  { name: "slate-300", hex: "#cbd5e1" },
-  { name: "slate-600", hex: "#475569" },
-  { name: "slate-900", hex: "#0f172a" },
-
-  { name: "teal-300", hex: "#50f8ef" },
-  { name: "teal-600", hex: "#009da1" },
-  { name: "teal-900", hex: "#057d80" },
-
-  { name: "yellow-300", hex: "#ffdd59" },
-  { name: "yellow-600", hex: "#dd7d02" },
-  { name: "yellow-900", hex: "#7a380d" },
-
-  { name: "gray-300", hex: "#aebdcb" },
-  { name: "gray-600", hex: "#4e657b" },
-  { name: "gray-900", hex: "#323d48" },
-];
+import ColorPicker from "./ColorPicker";
 
 export default function SettingsModal({ open, setOpen, formId }) {
   const { noCodeForm, isLoadingNoCodeForm, mutateNoCodeForm } =
@@ -127,7 +68,7 @@ export default function SettingsModal({ open, setOpen, formId }) {
     setChartColorsLoading(true);
     setTimeout(async () => {
       const newNoCodeForm = JSON.parse(JSON.stringify(noCodeForm));
-      newNoCodeForm.chartColors = {colors: chartColorsObject};
+      newNoCodeForm.chartColors = { colors: chartColorsObject };
       await persistNoCodeForm(newNoCodeForm);
       mutateNoCodeForm(newNoCodeForm);
       setChartColorsLoading(false);
@@ -261,476 +202,80 @@ export default function SettingsModal({ open, setOpen, formId }) {
                     Custom colors
                   </h3>
                   <div className="w-full mt-2 text-sm text-gray-500 flex flex-col gap-3">
-                    <Listbox
-                      value={selectedTextColor}
-                      onChange={setSelectedTextColor}
-                    >
-                      {({ open }) => (
-                        <div className="flex items-center justify-between">
-                          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                            Text Color
-                            <p className="text-gray-500 font-normal">
-                              The color will be applied on all texts in the form
-                            </p>
-                          </Listbox.Label>
-                          {textColorLoading ? (
-                            <TailSpin color="#1f2937" height={30} width={30} />
-                          ) : (
-                            <div className="relative w-1/3">
-                              <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                                <span className="flex items-center">
-                                  <span
-                                    className={classNames(
-                                      `bg-${selectedTextColor}`,
-                                      "h-5 w-5 flex-shrink-0 rounded-full"
-                                    )}
-                                  ></span>
-                                  <span className="ml-3 block truncate">
-                                    {selectedTextColor}
-                                  </span>
-                                </span>
-                                <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                  <ChevronUpDownIcon
-                                    className="h-5 w-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
-
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                  {colors.map((color) =>
-                                    variants.map((variant) => (
-                                      <Listbox.Option
-                                        key={`${color}-${variant}`}
-                                        className={({ active }) =>
-                                          classNames(
-                                            active
-                                              ? "bg-indigo-600 text-white"
-                                              : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
-                                          )
-                                        }
-                                        value={`${color}-${variant}`}
-                                      >
-                                        {({ selected, active }) => (
-                                          <>
-                                            <div className="flex items-center">
-                                              <span
-                                                className={classNames(
-                                                  `bg-${color}-${variant}`,
-                                                  "h-5 w-5 flex-shrink-0 rounded-full"
-                                                )}
-                                              ></span>
-                                              <span
-                                                className={classNames(
-                                                  selected
-                                                    ? "font-semibold"
-                                                    : "font-normal",
-                                                  "ml-3 block truncate"
-                                                )}
-                                              >
-                                                {`${color}-${variant}`}
-                                              </span>
-                                            </div>
-
-                                            {selected ? (
-                                              <span
-                                                className={classNames(
-                                                  active
-                                                    ? "text-white"
-                                                    : "text-indigo-600",
-                                                  "absolute inset-y-0 right-0 flex items-center pr-4"
-                                                )}
-                                              >
-                                                <CheckIcon
-                                                  className="h-5 w-5"
-                                                  aria-hidden="true"
-                                                />
-                                              </span>
-                                            ) : null}
-                                          </>
-                                        )}
-                                      </Listbox.Option>
-                                    ))
-                                  )}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </div>
+                    <div className="flex items-center justify-between">
+                      <div className="block text-sm font-medium leading-6 text-gray-900">
+                        Text Color
+                        <p className="text-gray-500 font-normal">
+                          The color will be applied to all texts in the form
+                        </p>
+                      </div>
+                      {textColorLoading ? (
+                        <TailSpin color="#1f2937" height={30} width={30} />
+                      ) : (
+                        <ColorPicker
+                          selectedColor={selectedTextColor}
+                          setSelectedColor={setSelectedTextColor}
+                        />
                       )}
-                    </Listbox>
-                    <Listbox
-                      value={selectedBgColor}
-                      onChange={setSelectedBgColor}
-                    >
-                      {({ open }) => (
-                        <div className="flex items-center justify-between">
-                          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                            Background Color
-                            <p className="text-gray-500 font-normal">
-                              The color will be applied on the background of the
-                              form
-                            </p>
-                          </Listbox.Label>
-                          {backgroundColorLoading ? (
-                            <TailSpin color="#1f2937" height={30} width={30} />
-                          ) : (
-                            <div className="relative w-1/3">
-                              <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                                <span className="flex items-center">
-                                  <span
-                                    className={classNames(
-                                      `bg-${selectedBgColor}`,
-                                      selectedBgColor === "white"
-                                        ? "border border-gray-200"
-                                        : null,
-                                      "h-5 w-5 flex-shrink-0 rounded-full"
-                                    )}
-                                  ></span>
-                                  <span className="ml-3 block truncate">
-                                    {selectedBgColor}
-                                  </span>
-                                </span>
-                                <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                  <ChevronUpDownIcon
-                                    className="h-5 w-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
+                    </div>
 
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                  <Listbox.Option
-                                    key={`white`}
-                                    className={({ active }) =>
-                                      classNames(
-                                        active
-                                          ? "bg-indigo-600 text-white"
-                                          : "text-gray-900",
-                                        "relative cursor-default select-none py-2 pl-3 pr-9"
-                                      )
-                                    }
-                                    value={`white`}
-                                  >
-                                    {({ selected, active }) => (
-                                      <>
-                                        <div className="flex items-center">
-                                          <span
-                                            className={classNames(
-                                              `bg-white`,
-                                              "h-5 w-5 flex-shrink-0 rounded-full border border-gray-200"
-                                            )}
-                                          ></span>
-                                          <span
-                                            className={classNames(
-                                              selected
-                                                ? "font-semibold"
-                                                : "font-normal",
-                                              "ml-3 block truncate"
-                                            )}
-                                          >
-                                            {`white`}
-                                          </span>
-                                        </div>
-
-                                        {selected ? (
-                                          <span
-                                            className={classNames(
-                                              active
-                                                ? "text-white"
-                                                : "text-indigo-600",
-                                              "absolute inset-y-0 right-0 flex items-center pr-4"
-                                            )}
-                                          >
-                                            <CheckIcon
-                                              className="h-5 w-5"
-                                              aria-hidden="true"
-                                            />
-                                          </span>
-                                        ) : null}
-                                      </>
-                                    )}
-                                  </Listbox.Option>
-                                  {colors.map((color) =>
-                                    variants.map((variant) => (
-                                      <Listbox.Option
-                                        key={`${color}-${variant}`}
-                                        className={({ active }) =>
-                                          classNames(
-                                            active
-                                              ? "bg-indigo-600 text-white"
-                                              : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
-                                          )
-                                        }
-                                        value={`${color}-${variant}`}
-                                      >
-                                        {({ selected, active }) => (
-                                          <>
-                                            <div className="flex items-center">
-                                              <span
-                                                className={classNames(
-                                                  `bg-${color}-${variant}`,
-                                                  "h-5 w-5 flex-shrink-0 rounded-full"
-                                                )}
-                                              ></span>
-                                              <span
-                                                className={classNames(
-                                                  selected
-                                                    ? "font-semibold"
-                                                    : "font-normal",
-                                                  "ml-3 block truncate"
-                                                )}
-                                              >
-                                                {`${color}-${variant}`}
-                                              </span>
-                                            </div>
-
-                                            {selected ? (
-                                              <span
-                                                className={classNames(
-                                                  active
-                                                    ? "text-white"
-                                                    : "text-indigo-600",
-                                                  "absolute inset-y-0 right-0 flex items-center pr-4"
-                                                )}
-                                              >
-                                                <CheckIcon
-                                                  className="h-5 w-5"
-                                                  aria-hidden="true"
-                                                />
-                                              </span>
-                                            ) : null}
-                                          </>
-                                        )}
-                                      </Listbox.Option>
-                                    ))
-                                  )}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </div>
+                    <div className="flex items-center justify-between">
+                      <div className="block text-sm font-medium leading-6 text-gray-900">
+                        Background Color
+                        <p className="text-gray-500 font-normal">
+                          The color will be applied to the background of the
+                          form
+                        </p>
+                      </div>
+                      {backgroundColorLoading ? (
+                        <TailSpin color="#1f2937" height={30} width={30} />
+                      ) : (
+                        <ColorPicker
+                          selectedColor={selectedBgColor}
+                          setSelectedColor={setSelectedBgColor}
+                        />
                       )}
-                    </Listbox>
-                    <Listbox
-                      value={selectedButtonColor}
-                      onChange={setSelectedButtonColor}
-                    >
-                      {({ open }) => (
-                        <div className="flex items-center justify-between">
-                          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                            Buttons Color
-                            <p className="text-gray-500 font-normal">
-                              The color will be applied on all buttons
-                            </p>
-                          </Listbox.Label>
-                          {buttonsColorLoading ? (
-                            <TailSpin color="#1f2937" height={30} width={30} />
-                          ) : (
-                            <div className="relative w-1/3">
-                              <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                                <span className="flex items-center">
-                                  <span
-                                    className={classNames(
-                                      `bg-${selectedButtonColor}`,
-                                      "h-5 w-5 flex-shrink-0 rounded-full"
-                                    )}
-                                  ></span>
-                                  <span className="ml-3 block truncate">
-                                    {selectedButtonColor}
-                                  </span>
-                                </span>
-                                <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                  <ChevronUpDownIcon
-                                    className="h-5 w-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
+                    </div>
 
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                  {colors.map((color) =>
-                                    variants.map((variant) => (
-                                      <Listbox.Option
-                                        key={`${color}-${variant}`}
-                                        className={({ active }) =>
-                                          classNames(
-                                            active
-                                              ? "bg-indigo-600 text-white"
-                                              : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
-                                          )
-                                        }
-                                        value={`${color}-${variant}`}
-                                      >
-                                        {({ selected, active }) => (
-                                          <>
-                                            <div className="flex items-center">
-                                              <span
-                                                className={classNames(
-                                                  `bg-${color}-${variant}`,
-                                                  "h-5 w-5 flex-shrink-0 rounded-full"
-                                                )}
-                                              ></span>
-                                              <span
-                                                className={classNames(
-                                                  selected
-                                                    ? "font-semibold"
-                                                    : "font-normal",
-                                                  "ml-3 block truncate"
-                                                )}
-                                              >
-                                                {`${color}-${variant}`}
-                                              </span>
-                                            </div>
-
-                                            {selected ? (
-                                              <span
-                                                className={classNames(
-                                                  active
-                                                    ? "text-white"
-                                                    : "text-indigo-600",
-                                                  "absolute inset-y-0 right-0 flex items-center pr-4"
-                                                )}
-                                              >
-                                                <CheckIcon
-                                                  className="h-5 w-5"
-                                                  aria-hidden="true"
-                                                />
-                                              </span>
-                                            ) : null}
-                                          </>
-                                        )}
-                                      </Listbox.Option>
-                                    ))
-                                  )}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </div>
+                    <div className="flex items-center justify-between">
+                      <div className="block text-sm font-medium leading-6 text-gray-900">
+                        Buttons Color
+                        <p className="text-gray-500 font-normal">
+                          The color will be applied to all buttons
+                        </p>
+                      </div>
+                      {buttonsColorLoading ? (
+                        <TailSpin color="#1f2937" height={30} width={30} />
+                      ) : (
+                        <ColorPicker
+                          selectedColor={selectedButtonColor}
+                          setSelectedColor={setSelectedButtonColor}
+                        />
                       )}
-                    </Listbox>
+                    </div>
                   </div>
                   <h3 className="text-xl mt-8 font-medium leading-6 text-gray-900">
                     Answers colors
                   </h3>
                   <div className="w-full mt-2 text-sm text-gray-500 flex flex-col gap-3">
                     {chartColorsObject.map((selectedColor, index) => (
-                      <Listbox
-                        key={`${selectedColor}-${index}`}
-                        value={selectedColor}
-                        onChange={handleChartColorChanged}
+                      <div
+                        key={index}
+                        className="flex items-center justify-between"
                       >
-                        {({ open }) => (
-                          <div className="flex items-center justify-between">
-                            <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                              Answer {index + 1}
-                            </Listbox.Label>
-                            {chartColorsLoading ? (
-                              <TailSpin
-                                color="#1f2937"
-                                height={30}
-                                width={30}
-                              />
-                            ) : (
-                              <div className="relative w-1/3">
-                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                                  <span className="flex items-center">
-                                    <span
-                                      className={classNames(
-                                        `bg-${
-                                          chartColors.filter(
-                                            (c) => c.hex === selectedColor
-                                          )[0].name
-                                        }`,
-                                        "h-5 w-5 flex-shrink-0 rounded-full"
-                                      )}
-                                    ></span>
-                                    <span className="ml-3 block truncate">
-                                      {
-                                        chartColors.filter(
-                                          (c) => c.hex === selectedColor
-                                        )[0].name
-                                      }
-                                    </span>
-                                  </span>
-                                  <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                    <ChevronUpDownIcon
-                                      className="h-5 w-5 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                  </span>
-                                </Listbox.Button>
-
-                                <Transition
-                                  show={open}
-                                  as={Fragment}
-                                  leave="transition ease-in duration-100"
-                                  leaveFrom="opacity-100"
-                                  leaveTo="opacity-0"
-                                >
-                                  <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                    {chartColors.map((color) => (
-                                      <Listbox.Option
-                                        key={`${color.name}`}
-                                        className={({ active }) =>
-                                          classNames(
-                                            active
-                                              ? "bg-indigo-600 text-white"
-                                              : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
-                                          )
-                                        }
-                                        value={`${color.hex}-${index}`}
-                                      >
-                                        <div className="flex items-center">
-                                          <span
-                                            className={classNames(
-                                              `bg-${color.name}`,
-                                              "h-5 w-5 flex-shrink-0 rounded-full"
-                                            )}
-                                          ></span>
-                                          <span
-                                            className={classNames(
-                                              "ml-3 block truncate font-normal"
-                                            )}
-                                          >
-                                            {`${color.name}`}
-                                          </span>
-                                        </div>
-                                      </Listbox.Option>
-                                    ))}
-                                  </Listbox.Options>
-                                </Transition>
-                              </div>
-                            )}
-                          </div>
+                        <div className="block text-sm font-medium leading-6 text-gray-900">
+                          Answer {index + 1}
+                        </div>
+                        {chartColorsLoading ? (
+                          <TailSpin color="#1f2937" height={30} width={30} />
+                        ) : (
+                          <ColorPicker
+                            selectedColor={selectedColor}
+                            setSelectedColor={handleChartColorChanged}
+                            index={index}
+                          />
                         )}
-                      </Listbox>
+                      </div>
                     ))}
                   </div>
                 </div>
