@@ -73,9 +73,9 @@ export default function ColorPicker({
   setSelectedColor,
   index = null,
 }) {
-  let [referenceElement, setReferenceElement] = useState();
+  let [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
 
-  let [popperElement, setPopperElement] = useState();
+  let [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
   let { styles, attributes } = usePopper(referenceElement, popperElement);
 
   return (
