@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import getConfig from "next/config";
 import { classNames } from "../../lib/utils";
+import React from "react";
 
 const { publicRuntimeConfig } = getConfig();
 const { publicPrivacyUrl, publicImprintUrl } = publicRuntimeConfig;

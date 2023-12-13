@@ -8,6 +8,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 import { classNames } from "../../lib/utils";
 import ColorPicker from "./ColorPicker";
+import React from "react";
 
 export default function SettingsModal({ open, setOpen, formId }) {
   const { noCodeForm, isLoadingNoCodeForm, mutateNoCodeForm } =

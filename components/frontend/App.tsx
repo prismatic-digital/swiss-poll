@@ -8,6 +8,7 @@ import { useMemo } from "react";
 import { generateId, classNames } from "../../lib/utils";
 import Loading from "../Loading";
 import ResultsSummary from "../results/ResultsSummary";
+import React from "react";
 
 export default function App({
   id = "",
@@ -119,7 +120,6 @@ export default function App({
                         label: `mt-4 mb-2 block text-lg font-bold leading-7 text-custom-text`,
                       }}
                       required={block.data.required}
-                      style="`--customPadding:${someDynamicValue}`"
                     />
                   ) : block.type === "textareaQuestion" ? (
                     <SnoopElement

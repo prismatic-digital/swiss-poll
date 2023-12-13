@@ -4,6 +4,7 @@ import { TwitterPicker } from "react-color";
 import { Popover } from "@headlessui/react";
 import { usePopper } from "react-popper";
 import { classNames } from "../../lib/utils";
+import React from "react";
 
 const colors = [
   "#ffffff",

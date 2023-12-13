@@ -1,6 +1,7 @@
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
+import React from "react";
 
 export default function ChoiceResults({ element, colors }) {
   const data = {

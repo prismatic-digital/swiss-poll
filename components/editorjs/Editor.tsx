@@ -18,6 +18,7 @@ import PhoneQuestion from "./tools/PhoneQuestion";
 import NumberQuestion from "./tools/NumberQuestion";
 import TextareaQuestion from "./tools/TextareaQuestion";
 import ReactDOM from "react-dom";
+import React from "react";
 
 class Summary {
   static get toolbox() {
@@ -161,7 +162,7 @@ const Editor = ({
 
   return (
     <Fragment>
-      <div id={id}></div>
+      <div id={id} />
     </Fragment>
   );
 };

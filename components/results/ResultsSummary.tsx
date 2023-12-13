@@ -13,6 +13,7 @@ import TextResults from "./summary/TextResults";
 import ChoiceResults from "./summary/ChoiceResults";
 import LikertResults from "./summary/LikertResults";
 import { useNoCodeFormPublic } from "../../lib/noCodeForm";
+import React from "react";
 
 export default function ResultsSummary({ formId, showCards = true }) {
   const { submissionSessions, isLoadingSubmissionSessions } =
