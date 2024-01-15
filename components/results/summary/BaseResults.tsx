@@ -69,9 +69,9 @@ export default function BaseResults({ element, children }) {
     <div className="my-8 overflow-hidden bg-white rounded-lg shadow">
       <div className="px-4 py-5 sm:p-6">
         <div className="flex items-center">
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             {getElementTypeIcon(element.type)}
-          </div>
+          </div> */}
           <div className="ml-4">
             <h3 className="font-medium leading-6 text-gray-900 text-md">
               {element.label}
