@@ -3,7 +3,6 @@ import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
 
 export default function LikertResults({ element, colors }) {
-
   const data = {
     labels: element.rows.map((o) => o.label),
     datasets: element.columns.map((column, i) => {
@@ -31,14 +30,22 @@ export default function LikertResults({ element, colors }) {
       y: {
         ticks: {
           display: true,
-          autoSkip: false
+          autoSkip: false,
+          font: function (context) {
+            var width = context.chart.width;
+            var size = Math.round(width / 32);
+            
+            return {
+              size: size > 12 ? 12 : (size < 8 ? 8 : size),
+            };
+          },
         },
       },
       x: {
         ticks: {
           display: true,
           precision: 0,
-          autoSkip: false
+          autoSkip: false,
         },
       },
     },

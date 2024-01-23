@@ -32,7 +32,15 @@ export default function ChoiceResults({ element, colors }) {
       y: {
         ticks: {
           display: true,
-          autoSkip: false
+          autoSkip: false,
+          font: function (context) {
+            var width = context.chart.width;
+            var size = Math.round(width / 32);
+            
+            return {
+              size: size > 12 ? 12 : (size < 8 ? 8 : size),
+            };
+          },
         },
       },
       x: {
