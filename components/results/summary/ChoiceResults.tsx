@@ -21,6 +21,8 @@ export default function ChoiceResults({ element, colors }) {
   const options: any = {
     indexAxis: "y",
     responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,
@@ -30,12 +32,14 @@ export default function ChoiceResults({ element, colors }) {
       y: {
         ticks: {
           display: true,
+          autoSkip: false
         },
       },
       x: {
         ticks: {
           display: true,
           precision: 0,
+          autoSkip: false
         },
       }
     },

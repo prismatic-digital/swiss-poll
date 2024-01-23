@@ -31,12 +31,14 @@ export default function LikertResults({ element, colors }) {
       y: {
         ticks: {
           display: true,
+          autoSkip: false
         },
       },
       x: {
         ticks: {
           display: true,
           precision: 0,
+          autoSkip: false
         },
       },
     },
