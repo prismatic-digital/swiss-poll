@@ -19,6 +19,10 @@ export default async function handle(
         published: true,
         closed: true,
         blocks: true,
+        textColor: true,
+        backgroundColor: true,
+        buttonsColor: true,
+        chartColors: true,
       },
     });
     if (data === null) return res.status(404).json({ error: "not found" });

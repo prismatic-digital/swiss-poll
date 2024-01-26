@@ -46,7 +46,7 @@ export default function FormList() {
                 alertText="You don't have any forms yet."
                 hintText="Start by creating a form."
                 buttonText="create form"
-                borderStyles="border-4 border-dotted border-red"
+                borderStyles="border-4 border-dotted border-ui-green"
                 hasButton={true}
               >
                 <DocumentPlusIcon className="w-24 h-24 mx-auto text-ui-gray-medium stroke-thin" />
@@ -101,7 +101,7 @@ export default function FormList() {
                             {({ open }) => (
                               <>
                                 <div>
-                                  <Menu.Button className="flex items-center p-2 -m-2 rounded-full text-red">
+                                  <Menu.Button className="flex items-center p-2 -m-2 rounded-full text-ui-green">
                                     <span className="sr-only">
                                       Open options
                                     </span>

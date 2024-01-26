@@ -143,7 +143,7 @@ import "@snoopforms/react/dist/styles.css";
                   href="https://docs.snoopforms.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="underline text-red hover:no-underline"
+                  className="underline text-ui-green hover:no-underline"
                 >
                   in the docs.
                 </a>{" "}

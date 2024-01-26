@@ -26,11 +26,11 @@ const SecondNavBar: React.FC<Props> = ({ navItems, currentItemId }) => {
               `h-16 text-xs border-b-2 border-transparent`,
               !navItem.disabled &&
                 (navItem.id === currentItemId
-                  ? "text-red border-b-2 border-red"
-                  : "hover:border-gray-300 text-ui-gray-dark hover:text-red bg-transparent"),
+                  ? "text-ui-green border-b-2 border-ui-green"
+                  : "hover:border-gray-300 text-ui-gray-dark hover:text-ui-green bg-transparent"),
               navItem.disabled
                 ? "text-ui-gray-medium"
-                : "hover:border-b-2 hover:border-red text-ui-gray-dark hover:text-red"
+                : "hover:border-b-2 hover:border-ui-green text-ui-gray-dark hover:text-ui-green"
             )}
             onClick={navItem.onClick}
             disabled={navItem.disabled}

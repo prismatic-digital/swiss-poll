@@ -104,7 +104,7 @@ export default function ResultsResponses({ formId }: ResultsResponseProps) {
                                   <div>
                                     <span
                                       className={classNames(
-                                        "bg-red-200",
+                                        "bg-ui-green-200",
                                         "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
                                       )}
                                     >
@@ -140,7 +140,7 @@ export default function ResultsResponses({ formId }: ResultsResponseProps) {
                 </div>
                 <div className="w-full">
                   <button
-                    className="flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-300 border border-transparent shadow-sm hover:bg-red-500 focus:outline-none"
+                    className="flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-300 border border-transparent shadow-sm hover:bg-ui-green-500 focus:outline-none"
                     onClick={() => {
                       if (
                         confirm(

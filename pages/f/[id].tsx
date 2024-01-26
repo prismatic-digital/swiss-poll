@@ -6,6 +6,8 @@ import { useNoCodeFormPublic } from "../../lib/noCodeForm";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import getConfig from "next/config";
+import { classNames } from "../../lib/utils";
+import React from "react";
 
 const { publicRuntimeConfig } = getConfig();
 const { publicPrivacyUrl, publicImprintUrl } = publicRuntimeConfig;
@@ -26,9 +28,18 @@ function NoCodeFormPublic() {
     );
   }
 
+  const css = `:root {
+    --hex-color-custom-background: ${noCodeForm.backgroundColor};
+  }`
+
   return (
+
     <BaseLayoutUnauthorized title="snoopForms">
-      <div className="flex flex-col justify-between h-screen bg-white">
+      <style>{css}</style>
+      <div className={classNames(
+        `bg-custom-background`,
+        "flex flex-col justify-between min-h-screen"
+      )}>
         {noCodeForm.closed ? (
           <div className="flex min-h-screen bg-ui-gray-light">
             <div className="flex flex-col justify-center flex-1 px-4 py-12 mx-auto sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -53,7 +64,7 @@ function NoCodeFormPublic() {
             </div>
           </div>
         ) : (
-          <App formId={formId} blocks={noCodeForm.blocks} />
+          <App formId={formId} blocks={noCodeForm.blocks} noCodeForm={noCodeForm} />
         )}
         {(publicPrivacyUrl || publicImprintUrl) && (
           <footer className="flex items-center justify-center w-full h-10 text-xs text-gray-300">

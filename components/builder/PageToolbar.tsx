@@ -27,9 +27,9 @@ export default function PageToolbar({
             }}
             className={classNames(
               page.type === "thankyou"
-                ? "bg-red-400 text-white hover:bg-red-500"
+                ? "bg-ui-green-400 text-white hover:bg-ui-green-500"
                 : "bg-white text-gray-400 hover:bg-gray-50",
-              "has-tooltip relative inline-flex items-center px-4 py-2 text-sm font-medium  border border-gray-300 rounded-l-md  focus:z-10 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500"
+              "has-tooltip relative inline-flex items-center px-4 py-2 text-sm font-medium  border border-gray-300 rounded-l-md  focus:z-10 focus:outline-none focus:ring-1 focus:ring-ui-green-500 focus:border-ui-green-500"
             )}
           >
             <span className="sr-only">Thank You Page</span>
@@ -45,7 +45,7 @@ export default function PageToolbar({
                 deletePageAction(pageIdx);
               }
             }}
-            className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 bg-white border border-gray-300 has-tooltip rounded-r-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500"
+            className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 bg-white border border-gray-300 has-tooltip rounded-r-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-ui-green-500 focus:border-ui-green-500"
           >
             <span className="sr-only">Delete</span>
             <span className="w-24 p-1 -mt-16 -ml-8 text-xs text-white bg-gray-600 rounded shadow-lg tooltip">

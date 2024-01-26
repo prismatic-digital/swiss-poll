@@ -26,19 +26,19 @@ export default function SignInPage() {
       <div className="flex min-h-screen bg-ui-gray-light">
         <div className="flex flex-col justify-center flex-1 px-4 py-12 mx-auto sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           {error && (
-            <div className="absolute p-4 rounded-md top-10 bg-red-50">
+            <div className="absolute p-4 rounded-md top-10 bg-ui-green-50">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <XCircleIcon
-                    className="w-5 h-5 text-red-400"
+                    className="w-5 h-5 text-ui-green-400"
                     aria-hidden="true"
                   />
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-sm font-medium text-red-800">
+                  <h3 className="text-sm font-medium text-ui-green-800">
                     An error occurred when logging you in
                   </h3>
-                  <div className="mt-2 text-sm text-red-700">
+                  <div className="mt-2 text-sm text-ui-green-700">
                     <p className="space-y-1 whitespace-pre-wrap">{error}</p>
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function SignInPage() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -96,7 +96,7 @@ export default function SignInPage() {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function SignInPage() {
                   <div>
                     <button
                       type="submit"
-                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-red hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-ui-green hover:bg-ui-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500"
                     >
                       Sign in
                     </button>
@@ -113,7 +113,7 @@ export default function SignInPage() {
                         <Link href="/auth/forgot-password">
                           <a
                             href=""
-                            className="block text-xs text-red hover:text-red-600"
+                            className="block text-xs text-ui-green hover:text-ui-green-600"
                           >
                             Forgot your password?
                           </a>
@@ -123,7 +123,7 @@ export default function SignInPage() {
                       <Link href="/auth/signup">
                         <a
                           href=""
-                          className="text-xs text-red hover:text-red-600"
+                          className="text-xs text-ui-green hover:text-ui-green-600"
                         >
                           Create an account
                         </a>

@@ -56,7 +56,7 @@ export default function Submission({ formId, submissionSession }) {
                 (element) =>
                   element.type !== "submit" && (
                     <div key={element.name}>
-                      <p className="font-semibold text-red">{element.label}</p>
+                      <p className="font-semibold text-ui-green">{element.label}</p>
                       <p className="font-normal">
                         {element.value || "[not provided]"}
                       </p>

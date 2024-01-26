@@ -18,6 +18,7 @@ import Loading from "../Loading";
 import LoadingModal from "../LoadingModal";
 import ShareModal from "./ShareModal";
 import SettingsModal from "./SettingsModal";
+import React from "react";
 let Editor = dynamic(() => import("../editorjs/Editor"), {
   ssr: false,
 });

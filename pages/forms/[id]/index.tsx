@@ -1,4 +1,5 @@
-import { getSession } from "next-auth/react";
+import { authOptions } from '../../api/auth/[...nextauth]';
+import { getServerSession } from "next-auth/next"
 import Loading from "../../../components/Loading";
 import { formHasOwnership } from "../../../lib/api";
 import { prisma } from "../../../lib/prisma";
@@ -7,8 +8,8 @@ export default function FormIndex() {
   return <Loading />;
 }
 
-export async function getServerSideProps({ req, params, resolvedUrl }) {
-  const session = await getSession({ req });
+export async function getServerSideProps({ req, res, params, resolvedUrl }) {
+  const session = await getServerSession(req, res, authOptions)
   if (!session) {
     return {
       redirect: {

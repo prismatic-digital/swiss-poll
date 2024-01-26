@@ -42,19 +42,19 @@ export default function SignUpPage() {
       <div className="flex min-h-screen bg-ui-gray-light">
         <div className="flex flex-col justify-center flex-1 px-4 py-12 mx-auto sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           {error && (
-            <div className="absolute p-4 rounded-md top-10 bg-red-50">
+            <div className="absolute p-4 rounded-md top-10 bg-ui-green-50">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <XCircleIcon
-                    className="w-5 h-5 text-red-400"
+                    className="w-5 h-5 text-ui-green-400"
                     aria-hidden="true"
                   />
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-sm font-medium text-red-800">
+                  <h3 className="text-sm font-medium text-ui-green-800">
                     An error occurred when logging you in
                   </h3>
-                  <div className="mt-2 text-sm text-red-700">
+                  <div className="mt-2 text-sm text-ui-green-700">
                     <p className="space-y-1 whitespace-pre-wrap">{error}</p>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ export default function SignUpPage() {
                         type="text"
                         autoComplete="given-name"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -110,7 +110,7 @@ export default function SignUpPage() {
                         type="text"
                         autoComplete="family-name"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export default function SignUpPage() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function SignUpPage() {
                         name="password"
                         type="password"
                         required
-                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm ph-no-capture"
+                        className="block w-full px-3 py-2 border rounded-md shadow-sm appearance-none placeholder-ui-gray-medium border-ui-gray-medium focus:outline-none focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm ph-no-capture"
                       />
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function SignUpPage() {
                   <div>
                     <button
                       type="submit"
-                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-red hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                      className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-ui-green hover:bg-ui-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500"
                     >
                       Sign up
                     </button>
@@ -161,7 +161,7 @@ export default function SignUpPage() {
                     <div className="mt-3 text-xs text-center text-gray-600">
                       Already have an account?{" "}
                       <Link href="/auth/signin">
-                        <a className="text-red hover:text-red-600">Log in.</a>
+                        <a className="text-ui-green hover:text-ui-green-600">Log in.</a>
                       </Link>
                     </div>
                     {(termsUrl || privacyUrl) && (
@@ -170,7 +170,7 @@ export default function SignUpPage() {
                         <br />
                         {termsUrl && (
                           <a
-                            className="text-red hover:text-red-600"
+                            className="text-ui-green hover:text-ui-green-600"
                             href={termsUrl}
                             rel="noreferrer"
                             target="_blank"
@@ -181,7 +181,7 @@ export default function SignUpPage() {
                         {termsUrl && privacyUrl && <span> and </span>}
                         {privacyUrl && (
                           <a
-                            className="text-red hover:text-red-600"
+                            className="text-ui-green hover:text-ui-green-600"
                             href={privacyUrl}
                             rel="noreferrer"
                             target="_blank"

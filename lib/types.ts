@@ -49,6 +49,7 @@ export type SnoopType =
   | "submit"
   | "text"
   | "textarea"
+  | "likert"
   | "website";
 
 export type SchemaElement = {
@@ -79,12 +80,30 @@ export type SubmissionSummaryElement = {
   label?: string;
   summary?: string[];
   options?: SubmissionSummaryOption[];
+  rows?: SubmissionSummaryRow[];
+  columns: SubmissionSummaryColumn[];
 };
 
 export type SubmissionSummaryOption = {
   label: string;
   value: string;
   summary: number;
+};
+
+export type Summary = {
+  count: number;
+  label: string;
+}
+
+export type SubmissionSummaryRow = {
+  label: string;
+  id: string;
+  summary: Summary[];
+};
+
+export type SubmissionSummaryColumn = {
+  label: string;
+  id: string;
 };
 
 export type pageSubmissionEvent = {
@@ -143,4 +162,4 @@ type SubmissionPage = {
   elements: SubmissionPageElement[];
 };
 
-type SubmissionPageElement = SchemaElement & { value: string };
+type SubmissionPageElement = SchemaElement & { value: any };

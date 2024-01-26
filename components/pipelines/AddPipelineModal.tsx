@@ -67,7 +67,7 @@ export default function AddPipelineModal({ open, setOpen }) {
                         onClick={() => {
                           setTypeId(pipeline.typeId);
                         }}
-                        className="inline-flex items-center px-4 py-2 font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                        className="inline-flex items-center px-4 py-2 font-medium text-white bg-ui-green-600 border border-transparent rounded-md shadow-sm hover:bg-ui-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500 sm:text-sm"
                       >
                         Select
                       </button>
@@ -90,13 +90,13 @@ export default function AddPipelineModal({ open, setOpen }) {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-ui-green-600 border border-transparent rounded-md shadow-sm hover:bg-ui-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ui-green-500"
                 >
                   Create
                 </button>

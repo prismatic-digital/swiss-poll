@@ -12,11 +12,13 @@ import EmailQuestion from "./tools/EmailQuestion";
 import PageTransition from "./tools/PageTransition";
 import MultipleChoiceQuestion from "./tools/MultipleChoiceQuestion";
 import TextQuestion from "./tools/TextQuestion";
+import LikertScaleQuestion from "./tools/LikertScaleQuestion";
 import WebsiteQuestion from "./tools/WebsiteQuestion";
 import PhoneQuestion from "./tools/PhoneQuestion";
 import NumberQuestion from "./tools/NumberQuestion";
 import TextareaQuestion from "./tools/TextareaQuestion";
 import ReactDOM from "react-dom";
+import React from "react";
 
 class Summary {
   static get toolbox() {
@@ -121,6 +123,7 @@ const Editor = ({
         textareaQuestion: TextareaQuestion,
         emailQuestion: EmailQuestion,
         multipleChoiceQuestion: MultipleChoiceQuestion,
+        LikertScaleQuestion: LikertScaleQuestion,
         numberQuestion: NumberQuestion,
         phoneQuestion: PhoneQuestion,
         websiteQuestion: WebsiteQuestion,
@@ -130,7 +133,7 @@ const Editor = ({
           inlineToolbar: true,
           config: {
             placeholder:
-              "Start with your content or hit tab-key to insert block",
+              "Start with your content or hit tab key to insert block",
           },
         },
         header: {

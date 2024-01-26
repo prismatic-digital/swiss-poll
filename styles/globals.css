@@ -83,6 +83,12 @@
   font-display: swap;
 }
 
+:root {
+  --hex-color-custom-text: #000000;
+  --hex-color-custom-background: #FFFFFF;
+  --hex-color-custom-buttons: #000000;
+}
+
 .ce-block__content,
 .ce-toolbar__content {
   max-width: calc(100% - 80px) !important;
@@ -95,10 +101,10 @@
 
 @layer components {
   .bg-snoopfade {
-    @apply bg-gradient-to-br from-red to-red-500 hover:to-red;
+    @apply bg-gradient-to-br from-ui-green to-ui-green-500 hover:to-ui-green;
   }
   .text-snoopfade {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-red to-red-500 hover:to-red;
+    @apply text-transparent bg-clip-text bg-gradient-to-br from-ui-green to-ui-green-500 hover:to-ui-green;
   }
 }
 
@@ -109,3 +115,23 @@
 .has-tooltip:hover .tooltip {
   @apply z-50 visible;
 }
+
+div[title="#ffffff"] {
+  border: 1px solid #e2e8f0;
+}
+
+div[title^="#"] {
+  border-radius: 50% !important;
+}
+
+input[id^="rc-editable-input"] {
+  height: 30px !important;
+  width: 280px !important;
+}
+
+/* div[style^="background: rgb(240, 240, 240);"] {
+  background-color: #334155 !important;
+  color: #94a3b8 !important;
+} */
+
+

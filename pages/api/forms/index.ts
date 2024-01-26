@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
-import { getSession } from "next-auth/react";
+import { authOptions } from '../auth/[...nextauth]';
+import { getServerSession } from "next-auth/next"
 import { generateId } from "../../../lib/utils";
 import { capturePosthogEvent } from "../../../lib/posthog";
 
@@ -9,7 +10,8 @@ export default async function handle(
   res: NextApiResponse
 ) {
   // Check Authentication
-  const session = await getSession({ req: req });
+  //const session = await getSession({ req: req });
+  const session = await getServerSession(req, res, authOptions)
   if (!session) {
     return res.status(401).json({ message: "Not authenticated" });
   }
@@ -17,7 +19,7 @@ export default async function handle(
   // GET /api/forms
   // Gets all forms of a user
   if (req.method === "GET") {
-    const session = await getSession({ req });
+    const session = await getServerSession(req, res, authOptions)
     const formData = await prisma.form.findMany({
       where: {
         owner: { email: session.user.email },
@@ -41,7 +43,8 @@ export default async function handle(
   else if (req.method === "POST") {
     const form = req.body;
 
-    const session = await getSession({ req });
+    //const session = await getSession({ req });
+    const session = await getServerSession(req, res, authOptions)
     // get unique alphanumeric ID
     let validId = false;
     let id;

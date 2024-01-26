@@ -5,6 +5,7 @@ import {
   HashtagIcon,
   Bars4Icon,
   PhoneIcon,
+  TableCellsIcon
 } from "@heroicons/react/24/outline";
 import { IoMdRadioButtonOn } from "react-icons/io";
 import { classNames } from "../../../lib/utils";
@@ -42,6 +43,10 @@ export const elementTypes = [
     type: "website",
     icon: GlobeAltIcon,
   },
+  {
+    type: "likert",
+    icon: TableCellsIcon,
+  },
 ];
 
 export const getElementTypeIcon = (type) => {
@@ -50,7 +55,7 @@ export const getElementTypeIcon = (type) => {
     <span
       className={classNames(
         `text-white`,
-        `bg-red-500`,
+        `bg-ui-green-500`,
         "rounded-lg inline-flex p-3 ring-4 ring-white"
       )}
     >
@@ -64,9 +69,9 @@ export default function BaseResults({ element, children }) {
     <div className="my-8 overflow-hidden bg-white rounded-lg shadow">
       <div className="px-4 py-5 sm:p-6">
         <div className="flex items-center">
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             {getElementTypeIcon(element.type)}
-          </div>
+          </div> */}
           <div className="ml-4">
             <h3 className="font-medium leading-6 text-gray-900 text-md">
               {element.label}

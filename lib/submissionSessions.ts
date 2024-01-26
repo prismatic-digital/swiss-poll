@@ -145,6 +145,26 @@ export const getSubmissionSummary = (
                   }
                   optionInSummary.summary += 1;
                 }
+              } else if (elementInSummary.type === "likert") {
+                elementInSummary.rows.map((row) => {
+                  if (row.summary === undefined) {
+                    row.summary = elementInSummary.columns.map((column) => ({
+                      count: 0,
+                      label: column.label,
+                    }));
+                  }
+                  Object.keys(elementValue).map(function (k) {
+                    const optionInSummary = row.summary.find(
+                      (o) => o.label === elementValue[k]
+                    );
+
+                    if (typeof optionInSummary !== "undefined") {
+                      if (row.label === k) {
+                        optionInSummary.count += 1;
+                      }
+                    }
+                  });
+                });
               }
             }
           }

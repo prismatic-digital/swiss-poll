@@ -1,9 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  important: true,
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  safelist: [
+    {
+      pattern:
+        /bg-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
+    {
+      pattern:
+        /text-(red|green|pink|purple|blue|teal|amber|orange|yellow|gray|black|slate)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
   ],
   theme: {
     extend: {
@@ -34,7 +45,7 @@ module.exports = {
         full: "9999px",
       },
       colors: {
-        red: {
+        "ui-green": {
           DEFAULT: "#268484",
           50: "#268484",
           100: "#268484",
@@ -46,6 +57,19 @@ module.exports = {
           700: "#268484",
           800: "#268484",
           900: "#268484",
+        },
+        red: {
+          DEFAULT: "#ef4444",
+          50: "#fef2f2",
+          100: "#fee2e2",
+          200: "#fecaca",
+          300: "#fca5a5",
+          400: "#f87171",
+          500: "#ef4444",
+          600: "#dc2626",
+          700: "#b91c1c",
+          800: "#991b1b",
+          900: "#7f1d1d",
         },
         green: {
           DEFAULT: "#0be881",
@@ -186,6 +210,42 @@ module.exports = {
         white: {
           DEFAULT: "#ffffff",
         },
+        "custom-text": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-text)"),
+          100: dynamicHex("var(--hex-color-custom-text)"),
+          200: dynamicHex("var(--hex-color-custom-text)"),
+          300: dynamicHex("var(--hex-color-custom-text)"),
+          400: dynamicHex("var(--hex-color-custom-text)"),
+          500: dynamicHex("var(--hex-color-custom-text)"),
+          600: dynamicHex("var(--hex-color-custom-text)"),
+          700: dynamicHex("var(--hex-color-custom-text)"),
+          800: dynamicHex("var(--hex-color-custom-text)"),
+          900: dynamicHex("var(--hex-color-custom-text)"),
+        },
+        "custom-background": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-background)"),
+          100: dynamicHex("var(--hex-color-custom-background)"),
+          200: dynamicHex("var(--hex-color-custom-background)"),
+          300: dynamicHex("var(--hex-color-custom-background)"),
+          400: dynamicHex("var(--hex-color-custom-background)"),
+          500: dynamicHex("var(--hex-color-custom-background)"),
+          600: dynamicHex("var(--hex-color-custom-background)"),
+          700: dynamicHex("var(--hex-color-custom-background)"),
+          800: dynamicHex("var(--hex-color-custom-background)"),
+          900: dynamicHex("var(--hex-color-custom-background)"),
+        },
+        "custom-buttons": {
+          DEFAULT: dynamicHex("var(--hex-color-custom-buttons)"),
+          100: dynamicHex("var(--hex-color-custom-buttons)"),
+          200: dynamicHex("var(--hex-color-custom-buttons)"),
+          300: dynamicHex("var(--hex-color-custom-buttons)"),
+          400: dynamicHex("var(--hex-color-custom-buttons)"),
+          500: dynamicHex("var(--hex-color-custom-buttons)"),
+          600: dynamicHex("var(--hex-color-custom-buttons)"),
+          700: dynamicHex("var(--hex-color-custom-buttons)"),
+          800: dynamicHex("var(--hex-color-custom-buttons)"),
+          900: dynamicHex("var(--hex-color-custom-buttons)"),
+        },
       },
     },
   },
@@ -195,3 +255,7 @@ module.exports = {
     require("@tailwindcss/line-clamp"),
   ],
 };
+
+function dynamicHex(hex) {
+  return `${hex}`;
+}

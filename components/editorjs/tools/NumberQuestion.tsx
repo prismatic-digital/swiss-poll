@@ -112,7 +112,7 @@ export default class NumberQuestion implements BlockTool {
             className="w-full p-0 border-0 border-transparent ring-0 focus:ring-0 placeholder:text-gray-300"
             placeholder="Your Question"
           />
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-500 pointer-events-none">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-ui-green-500 pointer-events-none">
             *
           </div>
         </div>

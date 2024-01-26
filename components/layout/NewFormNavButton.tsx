@@ -8,7 +8,7 @@ export default function NewFormNavButton({}) {
     <>
       <button
         type="button"
-        className="items-center hidden text-sm border-r border-ui-gray-light sm:flex bg-ui-gray-lighter text-ui-gray-dark hover:text-white hover:bg-red-500"
+        className="items-center hidden text-sm border-r border-ui-gray-light sm:flex bg-ui-gray-lighter text-ui-gray-dark hover:text-white hover:bg-ui-green-500"
         onClick={() => setOpenNewFormModal(true)}
       >
         <nav className="hidden sm:flex" aria-label="Breadcrumb">

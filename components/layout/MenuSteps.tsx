@@ -24,7 +24,7 @@ export default function MenuSteps({ steps, currentStep }: MenuStepsProps) {
         <select
           id="steps"
           name="steps"
-          className="block w-full py-2 pl-3 pr-10 text-base rounded-md border-ui-gray-medium focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+          className="block w-full py-2 pl-3 pr-10 text-base rounded-md border-ui-gray-medium focus:outline-none focus:ring-ui-green focus:border-ui-green sm:text-sm"
           defaultValue={steps.find((step) => step.id === currentStep).name}
           onChange={(e) => {
             const stepId = e.target.children[e.target.selectedIndex].id;
@@ -45,7 +45,7 @@ export default function MenuSteps({ steps, currentStep }: MenuStepsProps) {
               <a
                 className={classNames(
                   step.id === currentStep
-                    ? "border-red text-red"
+                    ? "border-ui-green text-ui-green"
                     : "border-transparent text-ui-gray-dark hover:text-ui-gray-dark hover:border-ui-gray-medium",
                   "whitespace-nowrap py-5 px-1 border-b-2 font-medium text-sm"
                 )}

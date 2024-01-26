@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+import { authOptions } from '../../../auth/[...nextauth]';
+import { getServerSession } from "next-auth/next"
 import { formHasOwnership } from "../../../../../lib/api";
 import { prisma } from "../../../../../lib/prisma";
 
@@ -8,7 +9,7 @@ export default async function handle(
   res: NextApiResponse
 ) {
   // Check Authentication
-  const session = await getSession({ req: req });
+  const session = await getServerSession(req, res, authOptions);
   if (!session) {
     return res.status(401).json({ message: "Not authenticated" });
   }
@@ -42,7 +43,7 @@ export default async function handle(
   // Required fields in body: -
   // Optional fields in body: title, published, finishedOnboarding, elements, elementsDraft
   else if (req.method === "POST") {
-    const { id, createdAt, blocks, blocksDraft, published, closed } = req.body;
+    const { id, createdAt, blocks, blocksDraft, published, closed, textColor, backgroundColor, buttonsColor, chartColors } = req.body;
     const data = {
       id,
       createdAt,
@@ -51,6 +52,10 @@ export default async function handle(
       formId,
       published,
       closed,
+      textColor,
+      backgroundColor,
+      buttonsColor,
+      chartColors,
       updatedAt: new Date(),
     };
     // create or update record

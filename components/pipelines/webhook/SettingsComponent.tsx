@@ -54,7 +54,7 @@ export function WebhookSettings({ pipeline, setPipeline }) {
                 id="name"
                 value={pipeline.name || ""}
                 onChange={(e) => updateField("name", e.target.value)}
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm"
                 required
               />
             </div>
@@ -83,7 +83,7 @@ export function WebhookSettings({ pipeline, setPipeline }) {
                 onChange={(e) =>
                   updateField("endpointUrl", e.target.value, "data")
                 }
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm"
                 required
               />
             </div>
@@ -105,7 +105,7 @@ export function WebhookSettings({ pipeline, setPipeline }) {
                 id="secret"
                 value={pipeline.data.secret || ""}
                 onChange={(e) => updateField("secret", e.target.value, "data")}
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-ui-green-500 focus:border-ui-green-500 sm:text-sm"
               />
             </div>
             <p className="mt-2 text-xs text-gray-500" id="email-description">
@@ -145,7 +145,7 @@ export function WebhookSettings({ pipeline, setPipeline }) {
                         type="checkbox"
                         checked={pipeline.events.includes(eventType.id)}
                         onChange={() => toggleEvent(eventType.id)}
-                        className="w-4 h-4 text-red-600 border-gray-300 rounded-sm focus:ring-red-500"
+                        className="w-4 h-4 text-ui-green-600 border-gray-300 rounded-sm focus:ring-ui-green-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">

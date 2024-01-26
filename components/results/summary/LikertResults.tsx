@@ -1,21 +1,19 @@
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
-import React from "react";
 
-export default function ChoiceResults({ element, colors }) {
+export default function LikertResults({ element, colors }) {
   const data = {
-    //labels: element.data.options,
-    labels: element.options.map((o) => o.label),
-    datasets: [
-      {
-        //data: getDataset(element, elementAnswers),
-        data: element.options.map((o) => o.summary || 0),
-        borderColor: colors,
-        backgroundColor: colors,
+    labels: element.rows.map((o) => o.label),
+    datasets: element.columns.map((column, i) => {
+      return {
+        label: column.label,
+        data: element.rows.map((row) => row.summary[i].count),
+        borderColor: colors[i],
+        backgroundColor: colors[i],
         borderWidth: 1,
-      },
-    ],
+      };
+    }),
   };
 
   const options: any = {
@@ -47,9 +45,9 @@ export default function ChoiceResults({ element, colors }) {
         ticks: {
           display: true,
           precision: 0,
-          autoSkip: false
+          autoSkip: false,
         },
-      }
+      },
     },
   };
 
