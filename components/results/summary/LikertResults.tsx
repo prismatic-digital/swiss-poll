@@ -20,7 +20,6 @@ export default function LikertResults({ element, colors }) {
     indexAxis: "y",
     responsive: true,
     maintainAspectRatio: true,
-    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,

@@ -22,7 +22,6 @@ export default function ChoiceResults({ element, colors }) {
     indexAxis: "y",
     responsive: true,
     maintainAspectRatio: true,
-    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,
