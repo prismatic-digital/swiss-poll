@@ -2,9 +2,31 @@ import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
 
+function splitTextIntoLines(text, maxLineLength) {
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+
+  words.forEach(word => {
+      if ((line + word).length <= maxLineLength) {
+          line += word + ' ';
+      } else {
+          lines.push(line.trim());
+          line = word + ' ';
+      }
+  });
+
+  // Push the last line if there's any remaining text
+  if (line.length > 0) {
+      lines.push(line.trim());
+  }
+
+  return lines;
+}
+
 export default function LikertResults({ element, colors }) {
   const data = {
-    labels: element.rows.map((o) => o.label),
+    labels: element.rows.map((o) => splitTextIntoLines(o.label, 50)),
     datasets: element.columns.map((column, i) => {
       return {
         label: column.label,

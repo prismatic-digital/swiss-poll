@@ -3,10 +3,32 @@ import { Chart } from "react-chartjs-2";
 import BaseResults from "./BaseResults";
 import React from "react";
 
+function splitTextIntoLines(text, maxLineLength) {
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+
+  words.forEach(word => {
+      if ((line + word).length <= maxLineLength) {
+          line += word + ' ';
+      } else {
+          lines.push(line.trim());
+          line = word + ' ';
+      }
+  });
+
+  // Push the last line if there's any remaining text
+  if (line.length > 0) {
+      lines.push(line.trim());
+  }
+
+  return lines;
+}
+
 export default function ChoiceResults({ element, colors }) {
   const data = {
     //labels: element.data.options,
-    labels: element.options.map((o) => o.label),
+    labels: element.options.map((o) => splitTextIntoLines(o.label, 50)),
     datasets: [
       {
         //data: getDataset(element, elementAnswers),
