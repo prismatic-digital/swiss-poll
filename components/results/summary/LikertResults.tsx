@@ -26,7 +26,7 @@ function splitTextIntoLines(text, maxLineLength) {
 
 export default function LikertResults({ element, colors }) {
   const data = {
-    labels: element.rows.map((o) => splitTextIntoLines(o.label, 50)),
+    labels: element.rows.map((o) => splitTextIntoLines(o.label, 28)),
     datasets: element.columns.map((column, i) => {
       return {
         label: column.label,

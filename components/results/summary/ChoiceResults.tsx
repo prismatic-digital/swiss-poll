@@ -28,7 +28,7 @@ function splitTextIntoLines(text, maxLineLength) {
 export default function ChoiceResults({ element, colors }) {
   const data = {
     //labels: element.data.options,
-    labels: element.options.map((o) => splitTextIntoLines(o.label, 50)),
+    labels: element.options.map((o) => splitTextIntoLines(o.label, 28)),
     datasets: [
       {
         //data: getDataset(element, elementAnswers),
