@@ -4,22 +4,22 @@ import BaseResults from "./BaseResults";
 import React from "react";
 
 function splitTextIntoLines(text, maxLineLength) {
-  const words = text.split(' ');
-  let line = '';
+  const words = text.split(" ");
+  let line = "";
   const lines = [];
 
-  words.forEach(word => {
-      if ((line + word).length <= maxLineLength) {
-          line += word + ' ';
-      } else {
-          lines.push(line.trim());
-          line = word + ' ';
-      }
+  words.forEach((word) => {
+    if ((line + word).length <= maxLineLength) {
+      line += word + " ";
+    } else {
+      lines.push(line.trim());
+      line = word + " ";
+    }
   });
 
   // Push the last line if there's any remaining text
   if (line.length > 0) {
-      lines.push(line.trim());
+    lines.push(line.trim());
   }
 
   return lines;
@@ -57,9 +57,9 @@ export default function ChoiceResults({ element, colors }) {
           font: function (context) {
             var width = context.chart.width;
             var size = Math.round(width / 32);
-            
+
             return {
-              size: size > 12 ? 12 : (size < 8 ? 8 : size),
+              size: size > 12 ? 12 : size < 8 ? 8 : size,
             };
           },
         },
@@ -68,15 +68,17 @@ export default function ChoiceResults({ element, colors }) {
         ticks: {
           display: true,
           precision: 0,
-          autoSkip: false
+          autoSkip: false,
         },
-      }
+      },
     },
   };
 
+  
+
   return (
     <BaseResults element={element}>
-      <div className="flow-root px-8 my-4 mt-6 text-center">
+      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: 240}}>
         <Chart type="bar" data={data} options={options} />
       </div>
     </BaseResults>

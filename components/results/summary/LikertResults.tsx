@@ -74,7 +74,7 @@ export default function LikertResults({ element, colors }) {
 
   return (
     <BaseResults element={element}>
-      <div className="flow-root px-8 my-4 mt-6 text-center">
+      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: 240}}>
         <Chart type="bar" data={data} options={options} />
       </div>
     </BaseResults>
