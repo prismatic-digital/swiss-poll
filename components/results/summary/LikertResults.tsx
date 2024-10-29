@@ -41,7 +41,7 @@ export default function LikertResults({ element, colors }) {
   const options: any = {
     indexAxis: "y",
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -74,7 +74,7 @@ export default function LikertResults({ element, colors }) {
 
   return (
     <BaseResults element={element}>
-      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: 240}}>
+      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: 200}}>
         <Chart type="bar" data={data} options={options} />
       </div>
     </BaseResults>
