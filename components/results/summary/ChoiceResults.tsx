@@ -26,6 +26,9 @@ function splitTextIntoLines(text, maxLineLength) {
 }
 
 export default function ChoiceResults({ element, colors }) {
+  // Calculate dynamic height based on number of options
+  const dynamicHeight = Math.max(200, element.options.length * 50 + 100);
+
   const data = {
     //labels: element.data.options,
     labels: element.options.map((o) => splitTextIntoLines(o.label, 28)),
@@ -36,6 +39,7 @@ export default function ChoiceResults({ element, colors }) {
         borderColor: colors,
         backgroundColor: colors,
         borderWidth: 1,
+        barThickness: 35, // Controls the thickness of the bars
       },
     ],
   };
@@ -78,7 +82,7 @@ export default function ChoiceResults({ element, colors }) {
 
   return (
     <BaseResults element={element}>
-      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: 200}}>
+      <div className="flow-root px-8 my-4 mt-6 text-center" style={{minHeight: dynamicHeight, height: "auto"}}>
         <Chart type="bar" data={data} options={options} />
       </div>
     </BaseResults>
